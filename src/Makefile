@@ -14,11 +14,11 @@
 #                is connected.
 # FUSES ........ Parameters for avrdude to flash the fuses appropriately.
 
-DEVICE     = atmega88p
-DEVICE_P   = m88p
+DEVICE     = atmega88
+DEVICE_P   = m88
 CLOCK      = 18432000
 PROGRAMMER = -c usbtiny
-OBJECTS    = testled.o tlc5940.o mouthf.o
+OBJECTS    = testled.o tlc5940.o
 
 # Remove clock divider, set external crystal, enable clock output
 FUSES      = -U hfuse:w:0xd7:m -U lfuse:w:0xb7:m

@@ -57,7 +57,7 @@
 #define XLAT_PORT PORTB
 #define XLAT_PIN PB1
 
-#define TLC5940_N 3
+#define TLC5940_N 1
 
 #define setOutput(ddr, pin) ((ddr) |= (1 << (pin)))
 #define setLow(port, pin) ((port) &= ~(1 << (pin)))
@@ -108,14 +108,10 @@ void TLC5940_SetAllGS(uint16_t value);
 void TLC5940_Init(void);
 
 #define MAX_BRIGHT 2000
-#define NUMCHANNELS 37
+#define NUMCHANNELS 16
 extern uint8_t indexorden[];
 enum orden {
-  OUT14=0, OUT35, OUT25, OUT26, OUT29, OUT27, OUT28, OUT13,
-  OUT15, OUT16, OUT17, OUT12, OUTN0, OUTN1, OUTN2, OUT34,
   OUT00, OUT01, OUT02, OUT03, OUT04, OUT05, OUT06, OUT07,
-  OUT08, OUT18, OUT19, OUT20, OUT21, OUT22, OUT23, OUT24,
-  OUT33, OUT11, OUT10, OUT09, OUT32, OUT36, OUT31, OUT30,
-//  OUTN3, OUTN4, OUTN5, OUTN6, OUTN7, OUTN8, OUTN9, OUT10,
+  OUT08, OUT09, OUT10, OUT11, OUT12, OUT13, OUT14, OUT15
 };
 #endif
