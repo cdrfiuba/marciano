@@ -3,22 +3,25 @@
 #include <util/delay.h>
 
 #include "tlc5940.h"
-#include "mouthf.h"
 
 int main(void) {
-	MouthInit();
 	// Enable Global Interrupts
+	TLC5940_Init();
+	TLC5940_SetAllDC(63);
+	TLC5940_ClockInDC();
+  
+  
+	// Default all channels to off
+	TLC5940_SetAllGS(0);
 	sei();
 	
 	for (;;) {
-    SetMouthOff();
-    _delay_ms(100);
-    TestChannels();
-    _delay_ms(5000);
-    SetMouthTalk();
-    _delay_ms(5000);
-    SetMouthFade();
-    _delay_ms(5000);
+	  TLC5940_SetAllGS(0);
+   	  TLC5940_SetGSUpdateFlag();
+    _delay_ms(1000);
+	  TLC5940_SetAllGS(2055);
+   	  TLC5940_SetGSUpdateFlag();
+    _delay_ms(1000);
 	}
 	
 	return 0;
