@@ -44,9 +44,6 @@ volatile uint8_t gsUpdateFlag;
 uint8_t indexorden[NUMCHANNELS] ={
   OUT00, OUT01, OUT02, OUT03, OUT04, OUT05, OUT06, OUT07,
   OUT08, OUT09, OUT10, OUT11, OUT12, OUT13, OUT14, OUT15, 
-  OUT16, OUT17, OUT18, OUT19, OUT20, OUT21, OUT22, OUT23,
-  OUT24, OUT25, OUT26, OUT27, OUT28, OUT29, OUT30, OUT31,
-  OUT32, OUT33, OUT34, OUT35, OUT36
 };
 
 void TLC5940_SetDC(channel_t channel, uint8_t value) {	
@@ -183,6 +180,7 @@ ISR(TIMER2_COMPA_vect) {
 	
 	// Below this we have 4096 cycles to shift in the data for the next cycle
 	
+	gsUpdateFlag = 1;
 	if (gsUpdateFlag) {
     gsData_t temp;
 		for (gsData_t i = 0; i < gsDataSize; i++) {
