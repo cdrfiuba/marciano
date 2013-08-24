@@ -14,12 +14,12 @@
 #                is connected.
 # FUSES ........ Parameters for avrdude to flash the fuses appropriately.
 
-DEVICE     = atmega328p
+DEVICE     = atmega88
 CLOCK      = 18432000
 #CLOCK      = 16000000
 #CLOCK      = 8000000
 #CLOCK      = 1000000
-PROGRAMMER = -c avrispmkII -P usb
+PROGRAMMER = -c usbtiny -p m88
 OBJECTS    = main.o
 
 # Default setting for ATmega328P in Arduino Duemilanove
@@ -32,13 +32,13 @@ OBJECTS    = main.o
 #FUSES      = -U hfuse:w:0xd9:m -U lfuse:w:0xe2:m
 
 # Remove clock divider, set external crystal for ATmega328P
-FUSES      = -U hfuse:w:0xd9:m -U lfuse:w:0xe6:m
+FUSES      = -U hfuse:w:0xdf:m -U lfuse:w:0xaf:m
 
 # Remove clock divider, set external crystal, enable clock output
 #FUSES      = -U hfuse:w:0xd9:m -U lfuse:w:0xa6:m
 
 # Tune the lines below only if you know what you are doing:
-AVRDUDE    = avrdude $(PROGRAMMER) -p $(DEVICE)
+AVRDUDE    = avrdude $(PROGRAMMER)
 COMPILE    = avr-gcc -std=gnu99 -g -Wall -Winline -O3 -DF_CPU=$(CLOCK) -mmcu=$(DEVICE)
 #COMPILE    = avr-gcc -std=gnu99 -g -Wall -Winline -O3 -funroll-loops -DF_CPU=$(CLOCK) -mmcu=$(DEVICE)
 #COMPILE    = avr-gcc -std=gnu99 -g -Wall -Winline -mint8 -O3 -funroll-loops -DF_CPU=$(CLOCK) -mmcu=$(DEVICE)
