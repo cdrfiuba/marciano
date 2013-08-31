@@ -1,6 +1,7 @@
 #include <stdint.h>
 #include <avr/io.h>
 #include <avr/interrupt.h>
+#include <util/delay.h>
 
 #define GSCLK_DDR DDRB
 #define GSCLK_PORT PORTB
@@ -66,19 +67,19 @@ uint8_t gsData[192 * TLC5940_N] = {
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 		// Channel 15
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,			// Channel 14
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,			// Channel 13
-	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,			// Channel 12
-	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0,			// Channel 11
-	0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,			// Channel 10
-	0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0,			// Channel 9
-	0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0,			// Channel 8
-	0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0,			// Channel 7
-	0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0,			// Channel 6
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,			// Channel 12
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,			// Channel 11
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,			// Channel 10
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,			// Channel 9
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,			// Channel 8
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,			// Channel 7
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,			// Channel 6
 	0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,			// Channel 5
-	0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0,			// Channel 4
-	0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,			// Channel 3
-	0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,			// Channel 2
-	1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,			// Channel 1
-	1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,			// Channel 0
+	0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,			// Channel 4
+	0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,			// Channel 3
+	0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,			// Channel 2
+	0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,			// Channel 1
+	0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,			// Channel 0
 };
 
 void TLC5940_Init(void) {
@@ -169,11 +170,17 @@ ISR(TIMER0_COMPA_vect) {
 int main(void) {
 	TLC5940_Init();
 	TLC5940_ClockInDC();
-	
-	// Enable Global Interrupts
+	DDRC=DDRC|(1<<PC3);
+	// Enable Gndefined reference to `_delay_ms'lobal Interrupts
 	sei();
 
 	for (;;) {
+	_delay_ms(1000);
+	PORTC=PORTC|(1<<PC3);
+	gsData[12*15+4]=0;
+	_delay_ms(1000);
+	PORTC=PORTC&(~(1<<PC3));
+	gsData[12*15+4]=1;
 	}
 	
 	return 0;
