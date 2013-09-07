@@ -17,8 +17,8 @@
 DEVICE     = atmega88
 #CLOCK      = 18432000
 #CLOCK      = 16000000
-#CLOCK      = 8000000
-CLOCK      = 1000000
+CLOCK      = 8000000
+#CLOCK      = 1000000
 PROGRAMMER = -c usbtiny -p m88
 OBJECTS    = main.o
 

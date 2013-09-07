@@ -1,0 +1,10 @@
+syntax: glob
+
+*.elf
+*.o
+*.bin
+*.swp
+*.lst
+*.map
+*.orig
+*.hex
