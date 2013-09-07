@@ -74,12 +74,12 @@ uint8_t gsData[192 * TLC5940_N] = {
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,			// Channel 8
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,			// Channel 7
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,			// Channel 6
-	0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,			// Channel 5
-	0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,			// Channel 4
-	0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,			// Channel 3
-	0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,			// Channel 2
-	0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,			// Channel 1
-	0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,			// Channel 0
+	1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,			// Channel 5
+	1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,			// Channel 4
+	1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,			// Channel 3
+	1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,			// Channel 2
+	1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,			// Channel 1
+	1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,			// Channel 0
 };
 
 void TLC5940_Init(void) {
@@ -165,22 +165,43 @@ ISR(TIMER0_COMPA_vect) {
 			break;
 		}
 	}
+	setLow(PORTC,PC3);
 }
 
 int main(void) {
 	TLC5940_Init();
 	TLC5940_ClockInDC();
-	DDRC=DDRC|(1<<PC3);
+	setHigh(DDRC,PC3);
+	setHigh(PORTC,PC3);
+	
 	// Enable Gndefined reference to `_delay_ms'lobal Interrupts
 	sei();
 
 	for (;;) {
-	_delay_ms(1000);
-	PORTC=PORTC|(1<<PC3);
-	gsData[12*15+4]=0;
-	_delay_ms(1000);
-	PORTC=PORTC&(~(1<<PC3));
-	gsData[12*15+4]=1;
+		gsData[12*15]=1;
+		_delay_ms(1000);
+		gsData[12*12]=1;
+		_delay_ms(1000);
+		gsData[12*15]=0;
+		_delay_ms(1000);
+		gsData[12*12]=0;
+		_delay_ms(1000);
+//		gsData[12*14]=1;
+//		_delay_ms(1000);
+//		gsData[12*11]=1;
+//		_delay_ms(1000);
+//		gsData[12*14]=0;
+//		_delay_ms(1000);
+//		gsData[12*11]=0;
+//		_delay_ms(1000);
+//		gsData[12*13]=1;
+//		_delay_ms(1000);
+//		gsData[12*10]=1;
+//		_delay_ms(1000);
+//		gsData[12*13]=0;
+//		_delay_ms(1000);
+//		gsData[12*10]=0;
+//		_delay_ms(1000);
 	}
 	
 	return 0;
