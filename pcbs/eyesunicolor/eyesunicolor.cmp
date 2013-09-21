@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by CvPcb (2013-mar-13)-testing date = vie 13 sep 2013 21:58:01 ART
+Cmp-Mod V01 Created by CvPcb (2013-mar-13)-testing date = Fri 20 Sep 2013 20:16:15 ART
 
 BeginCmp
 TimeStamp = /5233A729;
@@ -113,7 +113,7 @@ IdModule  = LED-5MM;
 EndCmp
 
 BeginCmp
-TimeStamp = /5233A28D;
+TimeStamp = /523CD500;
 Reference = D16;
 ValeurCmp = LED;
 IdModule  = LED-5MM;
@@ -136,14 +136,14 @@ EndCmp
 BeginCmp
 TimeStamp = /5233A6CE;
 Reference = R1;
-ValeurCmp = R;
+ValeurCmp = 2.2k;
 IdModule  = R4-LARGE_PADS;
 EndCmp
 
 BeginCmp
 TimeStamp = /5233A555;
 Reference = R2;
-ValeurCmp = R;
+ValeurCmp = 10k;
 IdModule  = R4-LARGE_PADS;
 EndCmp
 
