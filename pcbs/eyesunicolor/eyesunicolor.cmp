@@ -1,8 +1,15 @@
-Cmp-Mod V01 Created by CvPcb (2013-mar-13)-testing date = Fri 20 Sep 2013 20:16:15 ART
+Cmp-Mod V01 Created by CvPcb (2013-mar-13)-testing date = Fri 18 Oct 2013 21:54:40 ART
 
 BeginCmp
 TimeStamp = /5233A729;
 Reference = C1;
+ValeurCmp = C;
+IdModule  = C1;
+EndCmp
+
+BeginCmp
+TimeStamp = /5261D27E;
+Reference = C2;
 ValeurCmp = C;
 IdModule  = C1;
 EndCmp
@@ -15,14 +22,14 @@ IdModule  = LED-5MM;
 EndCmp
 
 BeginCmp
-TimeStamp = /5233A27B;
+TimeStamp = /5233A221;
 Reference = D2;
 ValeurCmp = LED;
 IdModule  = LED-5MM;
 EndCmp
 
 BeginCmp
-TimeStamp = /5233A272;
+TimeStamp = /523CD500;
 Reference = D3;
 ValeurCmp = LED;
 IdModule  = LED-5MM;
@@ -36,7 +43,7 @@ IdModule  = LED-5MM;
 EndCmp
 
 BeginCmp
-TimeStamp = /5233A260;
+TimeStamp = /5233A245;
 Reference = D5;
 ValeurCmp = LED;
 IdModule  = LED-5MM;
@@ -57,42 +64,42 @@ IdModule  = LED-5MM;
 EndCmp
 
 BeginCmp
-TimeStamp = /5233A245;
+TimeStamp = /5233A260;
 Reference = D8;
 ValeurCmp = LED;
 IdModule  = LED-5MM;
 EndCmp
 
 BeginCmp
-TimeStamp = /5233A23C;
+TimeStamp = /5233A233;
 Reference = D9;
 ValeurCmp = LED;
 IdModule  = LED-5MM;
 EndCmp
 
 BeginCmp
-TimeStamp = /5233A233;
+TimeStamp = /5233A23C;
 Reference = D10;
 ValeurCmp = LED;
 IdModule  = LED-5MM;
 EndCmp
 
 BeginCmp
-TimeStamp = /5233A22A;
+TimeStamp = /5233A27B;
 Reference = D11;
 ValeurCmp = LED;
 IdModule  = LED-5MM;
 EndCmp
 
 BeginCmp
-TimeStamp = /5233A221;
+TimeStamp = /5233A218;
 Reference = D12;
 ValeurCmp = LED;
 IdModule  = LED-5MM;
 EndCmp
 
 BeginCmp
-TimeStamp = /5233A218;
+TimeStamp = /5233A22A;
 Reference = D13;
 ValeurCmp = LED;
 IdModule  = LED-5MM;
@@ -113,8 +120,120 @@ IdModule  = LED-5MM;
 EndCmp
 
 BeginCmp
-TimeStamp = /523CD500;
+TimeStamp = /5233A272;
 Reference = D16;
+ValeurCmp = LED;
+IdModule  = LED-5MM;
+EndCmp
+
+BeginCmp
+TimeStamp = /5261D234;
+Reference = D17;
+ValeurCmp = LED;
+IdModule  = LED-5MM;
+EndCmp
+
+BeginCmp
+TimeStamp = /5261D240;
+Reference = D18;
+ValeurCmp = LED;
+IdModule  = LED-5MM;
+EndCmp
+
+BeginCmp
+TimeStamp = /5261D22E;
+Reference = D19;
+ValeurCmp = LED;
+IdModule  = LED-5MM;
+EndCmp
+
+BeginCmp
+TimeStamp = /5261D246;
+Reference = D20;
+ValeurCmp = LED;
+IdModule  = LED-5MM;
+EndCmp
+
+BeginCmp
+TimeStamp = /5261D222;
+Reference = D21;
+ValeurCmp = LED;
+IdModule  = LED-5MM;
+EndCmp
+
+BeginCmp
+TimeStamp = /5261D228;
+Reference = D22;
+ValeurCmp = LED;
+IdModule  = LED-5MM;
+EndCmp
+
+BeginCmp
+TimeStamp = /5261D20A;
+Reference = D23;
+ValeurCmp = LED;
+IdModule  = LED-5MM;
+EndCmp
+
+BeginCmp
+TimeStamp = /5261D2EE;
+Reference = D24;
+ValeurCmp = LED;
+IdModule  = LED-5MM;
+EndCmp
+
+BeginCmp
+TimeStamp = /5261D24C;
+Reference = D25;
+ValeurCmp = LED;
+IdModule  = LED-5MM;
+EndCmp
+
+BeginCmp
+TimeStamp = /5261D25E;
+Reference = D26;
+ValeurCmp = LED;
+IdModule  = LED-5MM;
+EndCmp
+
+BeginCmp
+TimeStamp = /5261D21C;
+Reference = D27;
+ValeurCmp = LED;
+IdModule  = LED-5MM;
+EndCmp
+
+BeginCmp
+TimeStamp = /5261D216;
+Reference = D28;
+ValeurCmp = LED;
+IdModule  = LED-5MM;
+EndCmp
+
+BeginCmp
+TimeStamp = /5261D210;
+Reference = D29;
+ValeurCmp = LED;
+IdModule  = LED-5MM;
+EndCmp
+
+BeginCmp
+TimeStamp = /5261D252;
+Reference = D30;
+ValeurCmp = LED;
+IdModule  = LED-5MM;
+EndCmp
+
+BeginCmp
+TimeStamp = /5261D23A;
+Reference = D31;
+ValeurCmp = LED;
+IdModule  = LED-5MM;
+EndCmp
+
+BeginCmp
+TimeStamp = /5261D258;
+Reference = D32;
 ValeurCmp = LED;
 IdModule  = LED-5MM;
 EndCmp
@@ -127,8 +246,29 @@ IdModule  = DIP-28__300_ELL;
 EndCmp
 
 BeginCmp
+TimeStamp = /5261D204;
+Reference = J2;
+ValeurCmp = SUPP28;
+IdModule  = DIP-28__300_ELL;
+EndCmp
+
+BeginCmp
 TimeStamp = /5233ACB0;
 Reference = P1;
+ValeurCmp = CONN_5X2;
+IdModule  = PIN_ARRAY_5x2;
+EndCmp
+
+BeginCmp
+TimeStamp = /5261D29E;
+Reference = P2;
+ValeurCmp = CONN_5X2;
+IdModule  = PIN_ARRAY_5x2;
+EndCmp
+
+BeginCmp
+TimeStamp = /5261D3CA;
+Reference = P3;
 ValeurCmp = CONN_5X2;
 IdModule  = PIN_ARRAY_5x2;
 EndCmp
@@ -143,6 +283,20 @@ EndCmp
 BeginCmp
 TimeStamp = /5233A555;
 Reference = R2;
+ValeurCmp = 10k;
+IdModule  = R4-LARGE_PADS;
+EndCmp
+
+BeginCmp
+TimeStamp = /5261D275;
+Reference = R3;
+ValeurCmp = 2.2k;
+IdModule  = R4-LARGE_PADS;
+EndCmp
+
+BeginCmp
+TimeStamp = /5261D26D;
+Reference = R4;
 ValeurCmp = 10k;
 IdModule  = R4-LARGE_PADS;
 EndCmp
