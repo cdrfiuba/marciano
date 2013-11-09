@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Fri 25 Oct 2013 21:43:28 ART
+EESchema Schematic File Version 2  date Fri 08 Nov 2013 21:30:37 ART
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -36,7 +36,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
 Title ""
-Date "26 oct 2013"
+Date "9 nov 2013"
 Rev ""
 Comp ""
 Comment1 ""
@@ -637,15 +637,15 @@ Text Label 8600 4500 0    39   ~ 0
 VPRG_D
 Text Label 8600 4600 0    39   ~ 0
 SIN_D
-Text Label 8600 4700 0    39   ~ 0
+Text Label 9950 4500 2    39   ~ 0
 SCLK_D
-Text Label 8600 4800 0    39   ~ 0
-XLAT_D
-Text Label 8850 4900 2    39   ~ 0
-BLANK_D
-Text Label 9900 4800 2    39   ~ 0
-DCPRG_D
 Text Label 9900 4700 2    39   ~ 0
+XLAT_D
+Text Label 9900 4800 2    39   ~ 0
+BLANK_D
+Text Label 8600 4900 0    39   ~ 0
+DCPRG_D
+Text Label 8600 4700 0    39   ~ 0
 GSCLK_D
 $Comp
 L CONN_5X2 P2
@@ -675,16 +675,16 @@ $EndComp
 $Comp
 L VCC #PWR09
 U 1 1 5261D2DF
-P 9950 4500
-F 0 "#PWR09" H 10000 4550 60  0001 C CNN
-F 1 "VCC" H 9950 4500 60  0001 C CNN
-F 2 "" H 9950 4500 60  0001 C CNN
-F 3 "" H 9950 4500 60  0000 C CNN
-F 4 "#PWR" H 9950 4600 30  0001 C CNN "Reference"
-F 5 "VCC" H 9950 4600 30  0000 C CNN "Value"
-F 6 "" H 9950 4500 60  0000 C CNN "Footprint"
-	1    9950 4500
-	1    0    0    -1  
+P 8600 4800
+F 0 "#PWR09" H 8650 4850 60  0001 C CNN
+F 1 "VCC" H 8600 4800 60  0001 C CNN
+F 2 "" H 8600 4800 60  0001 C CNN
+F 3 "" H 8600 4800 60  0000 C CNN
+F 4 "#PWR" H 8600 4900 30  0001 C CNN "Reference"
+F 5 "VCC" H 8600 4900 30  0000 C CNN "Value"
+F 6 "" H 8600 4800 60  0000 C CNN "Footprint"
+	1    8600 4800
+	0    -1   -1   0   
 $EndComp
 $Comp
 L GND #PWR010
