@@ -15,17 +15,62 @@
 # FUSES ........ Parameters for avrdude to flash the fuses appropriately.
 
 DEVICE     = atmega88
-DEVICE_P   = m88
 CLOCK      = 18432000
-PROGRAMMER = -c usbtiny
+#CLOCK      = 2304000
+PROGRAMMER = -c usbtiny -p m88
 OBJECTS    = testled.o tlc5940.o
 
-# Remove clock divider, set external crystal, enable clock output
-FUSES      = -U hfuse:w:0xd7:m -U lfuse:w:0xb7:m
+# Remove clock divider, set external crystal, enable clock output atmega88
+# HFUSE = 1101 1111
+# LFUSE = 1010 1111
+FUSES      = -U hfuse:w:0xdf:m -U lfuse:w:0xaf:m
+# LFUSE = 0010 1111
+#FUSES      = -U hfuse:w:0xdf:m -U lfuse:w:0x2f:m
+
+# ---------- Begin TLC5940 Configuration Section ----------
+# Define the number of TLC5940 chips that are linked in series
+TLC5940_N = 2
+
+# Flag to choose whether to include routines for manually setting the dot
+# correction
+#  0 = Do not include dot correction routines (generates smaller code)
+#  1 = Include dot correction routines (will still read from EEPROM by default)
+TLC5940_MANUAL_DC_FUNCS = 2
+
+# DDR, PORT, and PIN connected to DCPRG
+DCPRG_DDR = DDRD
+DCPRG_PORT = PORTD
+DCPRG_PIN = PD4
+
+# DDR, PORT, and PIN connected to VPRG
+VPRG_DDR = DDRD
+VPRG_PORT = PORTD
+VPRG_PIN = PD7
+
+# DDR, PORT, and PIN connected to XLAT
+XLAT_DDR = DDRB
+XLAT_PORT = PORTB
+XLAT_PIN = PB1
+
+# This line integrates all options into a single flag called:
+#     $(TLC5940_DEFINES)
+# which should be appended to the definition of COMPILE below
+TLC5940_DEFINES = -DTLC5940_N=$(TLC5940_N) \
+                  -DTLC5940_MANUAL_DC_FUNCS=$(TLC5940_MANUAL_DC_FUNCS) \
+                  -DDCPRG_DDR=$(DCPRG_DDR) \
+                  -DDCPRG_PORT=$(DCPRG_PORT) \
+                  -DDCPRG_PIN=$(DCPRG_PIN) \
+                  -DVPRG_DDR=$(VPRG_DDR) \
+                  -DVPRG_PORT=$(VPRG_PORT) \
+                  -DVPRG_PIN=$(VPRG_PIN) \
+                  -DXLAT_DDR=$(XLAT_DDR) \
+                  -DXLAT_PORT=$(XLAT_PORT) \
+                  -DXLAT_PIN=$(XLAT_PIN)
+# ---------- End TLC5940 Configuration Section ----------
 
 # Tune the lines below only if you know what you are doing:
 AVRDUDE    = avrdude $(PROGRAMMER) -p $(DEVICE)
-COMPILE    = avr-gcc -std=gnu99 -g -Wall -Winline -O2 -DF_CPU=$(CLOCK) -mmcu=$(DEVICE) $(TLC5940_DEFINES)
+COMPILE    = avr-gcc -std=gnu99 -g -Wall -Winline -Os -DF_CPU=$(CLOCK) -mmcu=$(DEVICE) $(TLC5940_DEFINES)
 #COMPILE    = avr-gcc -std=gnu99 -g -Wall -Winline -O3 -funroll-loops -DF_CPU=$(CLOCK) -mmcu=$(DEVICE) $(TLC5940_DEFINES)
 #COMPILE    = avr-gcc -std=gnu99 -g -Wall -Winline -mint8 -O3 -funroll-loops -DF_CPU=$(CLOCK) -mmcu=$(DEVICE) $(TLC5940_DEFINES)
 
@@ -50,14 +95,11 @@ all:	main.hex
 program:	all
 	$(AVRDUDE) -U flash:w:main.hex:i
 
-pflash:	all
-	$(AVRDUDE) -n -U flash:w:main.hex:i
-
-fuse:
+fuses:
 	$(AVRDUDE) $(FUSES)
 
 # Xcode uses the Makefile targets "", "clean" and "install"
-install: flash fuse
+install: program fuses
 
 # if you use a bootloader, change the command below appropriately:
 load: all
