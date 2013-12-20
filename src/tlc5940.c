@@ -41,11 +41,7 @@ uint8_t dcData[dcDataSize];
 uint8_t gsData[gsDataSize];
 volatile uint8_t gsUpdateFlag;
 
-uint8_t indexorden[NUMCHANNELS] ={
-  OUT00, OUT01, OUT02, OUT03, OUT04, OUT05, OUT06, OUT07,
-  OUT08, OUT09, OUT10, OUT11, OUT12, OUT13, OUT14, OUT15, 
-};
-
+#if (TLC5940_MANUAL_DC_FUNCS)
 void TLC5940_SetDC(channel_t channel, uint8_t value) {	
 	channel = numChannels - 1 - channel;
 	channel_t i = (channel3_t)channel * 3 / 4;
@@ -89,19 +85,14 @@ void TLC5940_SetAllDC(uint8_t value) {
 void TLC5940_ClockInDC(void) {
 	setHigh(DCPRG_PORT, DCPRG_PIN);
 	setHigh(VPRG_PORT, VPRG_PIN);
-	dcData_t temp;
+	
 	for (dcData_t i = 0; i < dcDataSize; i++) {
-		// Start transmission
-		temp = dcData[i];
-		for (dcData_t j = 0; j < 8; j++) {
-       if (temp & 0x80) setHigh(SIN_PORT, SIN_PIN);
-       else setLow(SIN_PORT, SIN_PIN);
-       pulse(SCLK_PORT,SCLK_PIN);
-       temp = temp << 1;
-    }
+		SPDR = dcData[i];
+		while (!(SPSR & (1 << SPIF)));
 	}
 	pulse(XLAT_PORT, XLAT_PIN);
 }
+#endif
 
 void TLC5940_SetGS(channel_t channel, uint16_t value) {
 	channel = numChannels - 1 - channel;
@@ -148,18 +139,25 @@ void TLC5940_Init(void) {
 	
 	gsUpdateFlag = 1;
 	
-	// CTC with OCR2A as TOP
-	TCCR2A = (1 << WGM21);
+	// Enable SPI, Master, set clock rate fck/2
+	SPCR = (1 << SPE) | (1 << MSTR);
+	SPSR = (1 << SPI2X);
+	
+	// CTC with OCR0A as TOP
+	TCCR0A = (1 << WGM01);
+	
 	// clk_io/1024 (From prescaler)
-	TCCR2B = ((1 << CS22) | (1 << CS21)| (1 << CS20));
+	TCCR0B = ((1 << CS02) | (1 << CS00));
+	
 	// Generate an interrupt every 4096 clock cycles
-	OCR2A = 3;
+	OCR0A = 3;
+	
 	// Enable Timer/Counter0 Compare Match A interrupt
-	TIMSK2 |= (1 << OCIE2A);
+	TIMSK0 |= (1 << OCIE0A);
 }
 
 // This interrupt will get called every 4096 clock cycles
-ISR(TIMER2_COMPA_vect) {
+ISR(TIMER0_COMPA_vect) {
 	static uint8_t xlatNeedsPulse = 0;
 	
 	setHigh(BLANK_PORT, BLANK_PIN);
@@ -180,17 +178,10 @@ ISR(TIMER2_COMPA_vect) {
 	
 	// Below this we have 4096 cycles to shift in the data for the next cycle
 	
-	gsUpdateFlag = 1;
 	if (gsUpdateFlag) {
-    gsData_t temp;
 		for (gsData_t i = 0; i < gsDataSize; i++) {
-		    temp = gsData[i];
-		    for (gsData_t j = 0; j < 8; j++) {
-            if (temp & 0x80) setHigh(SIN_PORT, SIN_PIN);
-            else setLow(SIN_PORT, SIN_PIN);
-            pulse(SCLK_PORT,SCLK_PIN);
-            temp = temp << 1;
-        }
+			SPDR = gsData[i];
+			while (!(SPSR & (1 << SPIF)));
 		}
 		xlatNeedsPulse = 1;
 		gsUpdateFlag = 0;
