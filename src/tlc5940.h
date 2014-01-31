@@ -84,6 +84,10 @@
 #endif
 // --------------------------------------------------------
 
+
+#define MAX_BRIGHT   4095
+
+
 #define setOutput(ddr, pin) ((ddr) |= (1 << (pin)))
 #define setLow(port, pin) ((port) &= ~(1 << (pin)))
 #define setHigh(port, pin) ((port) |= (1 << (pin)))
