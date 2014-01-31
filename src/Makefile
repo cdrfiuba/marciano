@@ -18,7 +18,7 @@ DEVICE     = atmega88
 CLOCK      = 18432000
 #CLOCK      = 2304000
 PROGRAMMER = -c usbtiny -p m88
-OBJECTS    = testled.o tlc5940.o
+OBJECTS    = testled.o tlc5940.o eyes.o
 
 # Remove clock divider, set external crystal, enable clock output atmega88
 # HFUSE = 1101 1111

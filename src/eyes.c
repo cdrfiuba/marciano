@@ -4,25 +4,47 @@
 #include <util/delay.h>
 #include <stdbool.h>
 #include "tlc5940.h"
-#include "mouthf.h"
+#include "eyes.h"
+//        Vista desde adelante
+//
+//      5                        26
+//        7                    24
+//   2  6   10  12       19  21  25  29
+//  1  4  8  11  14     17  20 23  27  30
+// 0  3   9   13  15   16  18  22   28  31
 
 
-typedef enum MouthS_t {
-  M_OFF,
-  M_ON,
-  M_OPEN,
-  M_CLOSE,
-  M_FADE,
-  M_TALK,
-  M_TESTLINE
-} MouthS_t;
 
-volatile MouthS_t mouthState;
+uint8_t indexorden[numChannels];
+
+
+typedef enum EyesS_t {
+  E_OFF,
+  E_ON,
+  E_OPEN,
+  E_CLOSE,
+  E_FADE,
+  E_TALK,
+  E_TESTLEDS,
+  E_TEST
+} EyesS_t;
+
+volatile EyesS_t eyesState;
 volatile uint16_t iterate;
 volatile bool upstate;
-void MouthInit(void){
+
+void setEyesAngry (void);
+
+
+void eyesInit(void){
 	TLC5940_Init();
 	
+#if (TLC5940_MANUAL_DC_FUNCS)
+	TLC5940_SetAllDC(63);
+	TLC5940_ClockInDC();
+#endif
+
+
 	// CTC with OCR1A as TOP
 	//TCCR1A = (1 << WGM11);
 	// clk_io/1024 (From prescaler)
@@ -35,23 +57,23 @@ void MouthInit(void){
 	TLC5940_SetAllDC(63);
 	TLC5940_ClockInDC();
   
-  mouthState = M_OFF;
+  eyesState = E_OFF;
 	// Default all channels to off
 	TLC5940_SetAllGS(0);
 }
 
 
 ISR(TIMER1_COMPA_vect){
-  switch (mouthState) {
-    case M_OFF:
+  switch (eyesState) {
+    case E_OFF:
       break;
-    case M_ON:
+    case E_ON:
       break;
-    case M_OPEN:
+    case E_OPEN:
       break;
-    case M_CLOSE:
+    case E_CLOSE:
       break;
-    case M_FADE:
+    case E_FADE:
 	    while(gsUpdateFlag);	// wait until we can modify gsData
     	TLC5940_SetAllGS(iterate);
    	  TLC5940_SetGSUpdateFlag();
@@ -64,42 +86,49 @@ ISR(TIMER1_COMPA_vect){
         if (iterate == 0) upstate = true;
       }
       break;
-    case M_TALK:
-      if (iterate==0) SetMouthOpen();
-      else if (iterate == (TALK_PULSE/2)) SetMouthClose();
+    case E_TALK:
+      if (iterate==0) setEyesOpen();
+      else if (iterate == (TALK_PULSE/2)) setEyesClose();
       iterate++;
       if (iterate == TALK_PULSE) iterate = 0;
       break;
-    case M_TESTLINE:
+    case E_TESTLEDS:
 	    while(gsUpdateFlag);	// wait until we can modify gsData
 	    TLC5940_SetAllGS(0);
-      TLC5940_SetGS(indexorden[iterate], MAX_BRIGHT);
+      TLC5940_SetGS(iterate, MAX_BRIGHT);
    	  TLC5940_SetGSUpdateFlag();
-      iterate++;
-      if (iterate>NUMCHANNELS) iterate = 0;
+      iterate = (iterate + 1) % numChannels;
+      break;
+    case E_TEST:
+      setEyesAngry();
       break;
     default:
       break;
   }
 }
 
-void SetMouthFade(void){
-  mouthState = M_FADE;
+void setEyesFade(void){
+  eyesState = E_FADE;
   upstate = true;
   iterate = 0;
 }
 
-void SetMouthTalk(void){
-  mouthState = M_TALK;
+void setEyesTalk(void){
+  eyesState = E_TALK;
   iterate = 0;
 }
 
-void TestChannels(void) {
-  mouthState = M_TESTLINE;
+void eyesTestLeds(void) {
+  eyesState = E_TESTLEDS;
   iterate = 0;
 }
 
-void SetMouthOpen(void) {
+void eyesTest(void) {
+  eyesState = E_TEST;
+  iterate = 0;
+}
+
+void setEyesOpen(void) {
   uint8_t i;
 	while(gsUpdateFlag);	// wait until we can modify gsData
 	TLC5940_SetAllGS(0);
@@ -108,19 +137,19 @@ void SetMouthOpen(void) {
 	TLC5940_SetGSUpdateFlag();
 }
 
-void SetMouthOn() {
+void setEyesOn() {
 	while(gsUpdateFlag);	// wait until we can modify gsData
 	TLC5940_SetAllGS(MAX_BRIGHT);
   TLC5940_SetGSUpdateFlag();
 }
 
-void SetMouthOff() {
+void setEyesOff() {
 	while(gsUpdateFlag);	// wait until we can modify gsData
 	TLC5940_SetAllGS(0);
   TLC5940_SetGSUpdateFlag();
 }
 
-void SetMouthClose(void) {
+void setEyesClose(void) {
   uint8_t i;
 	while(gsUpdateFlag);	// wait until we can modify gsData
 	TLC5940_SetAllGS(0);
@@ -128,3 +157,8 @@ void SetMouthClose(void) {
 	TLC5940_SetGSUpdateFlag();
 }
 
+void setEyesAngry (void) {
+	while(gsUpdateFlag);	// wait until we can modify gsData
+  TLC5940_SetGS(2, MAX_BRIGHT*0.6);
+  TLC5940_SetGS(4, MAX_BRIGHT*0.8);
+}
