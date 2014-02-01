@@ -16,7 +16,7 @@
 
 
 uint8_t indexorden[numChannels];
-
+uint8_t t; //tiempo;
 
 typedef enum EyesS_t {
   E_OFF,
@@ -34,7 +34,10 @@ volatile uint16_t iterate;
 volatile bool upstate;
 
 void setEyesAngry (void);
-
+void setEyesCircle_d (uint8_t num);
+void setEyesCircle_i (uint8_t num);
+void setEyesBlinck_d (uint8_t num);
+void setEyesBlinck_i (uint8_t num);
 
 void eyesInit(void){
 	TLC5940_Init();
@@ -50,7 +53,7 @@ void eyesInit(void){
 	// clk_io/1024 (From prescaler)
 	TCCR1B = ((1<<WGM12)|(1 << CS12) | (0 << CS11)| (1 << CS10));
 	// Generate an interrupt every 'TICKER_MS' ms
-	OCR1A = (18*TICKER_MS);
+	OCR1A = (25*TICKER_MS);
 	// Enable Timer/Counter0 Compare Match A interrupt
 	TIMSK1 |= (1 << OCIE1A);
 
@@ -96,15 +99,22 @@ ISR(TIMER1_COMPA_vect){
 	    while(gsUpdateFlag);	// wait until we can modify gsData
 	    TLC5940_SetAllGS(0);
       TLC5940_SetGS(iterate, MAX_BRIGHT);
-   	  TLC5940_SetGSUpdateFlag();
+ //  	  TLC5940_SetGSUpdateFlag();
       iterate = (iterate + 1) % numChannels;
       break;
     case E_TEST:
-      setEyesAngry();
+	if (t==25) {
+	setEyesBlinck_d (iterate);
+	setEyesBlinck_i (iterate);
+        iterate = (iterate + 1) % 5;
+	t=0;
+	}
+	t++;
       break;
     default:
       break;
   }
+  TLC5940_SetGSUpdateFlag();
 }
 
 void setEyesFade(void){
@@ -126,6 +136,7 @@ void eyesTestLeds(void) {
 void eyesTest(void) {
   eyesState = E_TEST;
   iterate = 0;
+  t=0;
 }
 
 void setEyesOpen(void) {
@@ -159,6 +170,171 @@ void setEyesClose(void) {
 
 void setEyesAngry (void) {
 	while(gsUpdateFlag);	// wait until we can modify gsData
-  TLC5940_SetGS(2, MAX_BRIGHT*0.6);
-  TLC5940_SetGS(4, MAX_BRIGHT*0.8);
+  TLC5940_SetGS(5, MAX_BRIGHT);
+  TLC5940_SetGS(7, MAX_BRIGHT);
+  TLC5940_SetGS(10, MAX_BRIGHT);
+  TLC5940_SetGS(11, MAX_BRIGHT);
+  TLC5940_SetGS(12, MAX_BRIGHT);
+  TLC5940_SetGS(13, MAX_BRIGHT);
+  TLC5940_SetGS(14, MAX_BRIGHT);
+  TLC5940_SetGS(15, MAX_BRIGHT);
+  TLC5940_SetGS(2, MAX_BRIGHT);
+  TLC5940_SetGS(6, MAX_BRIGHT);
+  TLC5940_SetGS(8, MAX_BRIGHT);
+  TLC5940_SetGS(24, MAX_BRIGHT);
+  TLC5940_SetGS(21, MAX_BRIGHT);
+  TLC5940_SetGS(26, MAX_BRIGHT);
+  TLC5940_SetGS(20, MAX_BRIGHT);
+  TLC5940_SetGS(18, MAX_BRIGHT);
+  TLC5940_SetGS(19, MAX_BRIGHT);
+  TLC5940_SetGS(17, MAX_BRIGHT);
+  TLC5940_SetGS(16, MAX_BRIGHT);
+  TLC5940_SetGS(25, MAX_BRIGHT);
+  TLC5940_SetGS(29, MAX_BRIGHT);
+  TLC5940_SetGS(23, MAX_BRIGHT);
+  TLC5940_SetGSUpdateFlag();
+}
+
+void setEyesCircle_d (uint8_t num) {
+	uint8_t i;
+	while(gsUpdateFlag);	// wait until we can modify gsData
+  	for (i=0;i<16;i++) TLC5940_SetGS(i, MAX_BRIGHT*0);
+
+	if (num == 0) {
+	TLC5940_SetGS(0, MAX_BRIGHT);
+	TLC5940_SetGS(1, MAX_BRIGHT);
+	TLC5940_SetGS(4, MAX_BRIGHT);
+	TLC5940_SetGS(3, MAX_BRIGHT);
+	}
+	
+	else if (num == 1) {
+	TLC5940_SetGS(4, MAX_BRIGHT);
+	TLC5940_SetGS(3, MAX_BRIGHT);
+	TLC5940_SetGS(9, MAX_BRIGHT);
+	TLC5940_SetGS(8, MAX_BRIGHT);
+	}
+
+	else if (num == 2) {
+	TLC5940_SetGS(8, MAX_BRIGHT);
+	TLC5940_SetGS(9, MAX_BRIGHT);
+	TLC5940_SetGS(11, MAX_BRIGHT);
+	TLC5940_SetGS(13, MAX_BRIGHT);
+	}
+
+	else if (num == 3) {
+	TLC5940_SetGS(13, MAX_BRIGHT);
+	TLC5940_SetGS(11, MAX_BRIGHT);
+	TLC5940_SetGS(14, MAX_BRIGHT);
+	TLC5940_SetGS(15, MAX_BRIGHT);
+	}
+//	TLC5940_SetGSUpdateFlag();
+}
+
+	void setEyesCircle_i (uint8_t num) {
+	uint8_t i;
+	while(gsUpdateFlag);	// wait until we can modify gsData
+  	for (i=16;i<32;i++) TLC5940_SetGS(i, MAX_BRIGHT*0);
+
+	if (num == 0) {
+	TLC5940_SetGS(17, MAX_BRIGHT);
+	TLC5940_SetGS(16, MAX_BRIGHT);
+	TLC5940_SetGS(18, MAX_BRIGHT);
+	TLC5940_SetGS(20, MAX_BRIGHT);
+	}
+	
+	else if (num == 1) {
+	TLC5940_SetGS(20, MAX_BRIGHT);
+	TLC5940_SetGS(18, MAX_BRIGHT);
+	TLC5940_SetGS(23, MAX_BRIGHT);
+	TLC5940_SetGS(22, MAX_BRIGHT);
+	}
+
+	else if (num == 2) {
+	TLC5940_SetGS(23, MAX_BRIGHT);
+	TLC5940_SetGS(22, MAX_BRIGHT);
+	TLC5940_SetGS(27, MAX_BRIGHT);
+	TLC5940_SetGS(28, MAX_BRIGHT);
+	}
+
+	else if (num == 3) {
+	TLC5940_SetGS(27, MAX_BRIGHT);
+	TLC5940_SetGS(28, MAX_BRIGHT);
+	TLC5940_SetGS(30, MAX_BRIGHT);
+	TLC5940_SetGS(31, MAX_BRIGHT);
+	}
+//	TLC5940_SetGSUpdateFlag();
+}
+
+	void setEyesBlinck_d (uint8_t num) {
+	uint8_t i;
+	while(gsUpdateFlag);	// wait until we can modify gsData
+  	for (i=0;i<16;i++) TLC5940_SetGS(i, MAX_BRIGHT);
+
+	if (num == 0) {
+	TLC5940_SetGS(5, MAX_BRIGHT*0);
+	}
+	
+	else if (num == 1) {
+	TLC5940_SetGS(7, MAX_BRIGHT*0);
+	}
+
+	else if (num == 2) {
+	TLC5940_SetGS(2, MAX_BRIGHT*0);
+	TLC5940_SetGS(6, MAX_BRIGHT*0);
+	TLC5940_SetGS(10, MAX_BRIGHT*0);
+	TLC5940_SetGS(12, MAX_BRIGHT*0);
+	}
+
+	else if (num == 3) {
+	TLC5940_SetGS(1, MAX_BRIGHT*0);
+	TLC5940_SetGS(11, MAX_BRIGHT*0);
+	TLC5940_SetGS(14, MAX_BRIGHT*0);
+	TLC5940_SetGS(8, MAX_BRIGHT*0);
+	}
+
+	else if (num == 4) {
+	TLC5940_SetGS(0, MAX_BRIGHT*0);
+	TLC5940_SetGS(3, MAX_BRIGHT*0);
+	TLC5940_SetGS(9, MAX_BRIGHT*0);
+	TLC5940_SetGS(13, MAX_BRIGHT*0);
+	TLC5940_SetGS(15, MAX_BRIGHT*0);
+	}
+	
+}
+
+	void setEyesBlinck_i (uint8_t num) {
+	uint8_t i;
+	while(gsUpdateFlag);	// wait until we can modify gsData
+  	for (i=16;i<32;i++) TLC5940_SetGS(i, MAX_BRIGHT);
+
+	if (num == 0) {
+	TLC5940_SetGS(26, MAX_BRIGHT*0);
+	}
+	
+	else if (num == 1) {
+	TLC5940_SetGS(24, MAX_BRIGHT*0);
+	}
+
+	else if (num == 2) {
+	TLC5940_SetGS(19, MAX_BRIGHT*0);
+	TLC5940_SetGS(21, MAX_BRIGHT*0);
+	TLC5940_SetGS(25, MAX_BRIGHT*0);
+	TLC5940_SetGS(29, MAX_BRIGHT*0);
+	}
+
+	else if (num == 3) {
+	TLC5940_SetGS(17, MAX_BRIGHT*0);
+	TLC5940_SetGS(20, MAX_BRIGHT*0);
+	TLC5940_SetGS(23, MAX_BRIGHT*0);
+	TLC5940_SetGS(27, MAX_BRIGHT*0);
+	TLC5940_SetGS(30, MAX_BRIGHT*0);
+	}
+
+	else if (num == 4) {
+	TLC5940_SetGS(16, MAX_BRIGHT*0);
+	TLC5940_SetGS(18, MAX_BRIGHT*0);
+	TLC5940_SetGS(22, MAX_BRIGHT*0);
+	TLC5940_SetGS(28, MAX_BRIGHT*0);
+	TLC5940_SetGS(31, MAX_BRIGHT*0);
+	}
 }
