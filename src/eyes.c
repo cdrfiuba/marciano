@@ -44,8 +44,8 @@ void setEyesUpDown_d (uint8_t num);
 void setEyesUpDown_i (uint8_t num);
 void setEyesCircleMiddle_d (uint8_t num);
 void setEyesCircleMiddle_i (uint8_t num);
-void setEyesWink_d (void);
-void setEyesWink_i (void);
+void setEyesWink_d (uint8_t num);
+void setEyesWink_i (uint8_t num);
 void setEyesTired (uint8_t num);
 
 void eyesInit(void){
@@ -112,10 +112,9 @@ ISR(TIMER1_COMPA_vect){
       iterate = (iterate + 1) % numChannels;
       break;
     case E_TEST:
-	if (t==25) {
-	setEyesBlinck_d (iterate);
-	setEyesBlinck_i (iterate);
-        iterate = (iterate + 1) % 4;
+	if (t==1) {
+	setEyesTired (iterate);
+	iterate = (iterate + 1);
 	t=0;
 	}
 	t++;
@@ -274,7 +273,7 @@ void setEyesCircle_i (uint8_t num) {
 //	TLC5940_SetGSUpdateFlag();
 }
 
-void setEyesBlinck_d (uint8_t num) {
+void setEyesBlink_d (uint8_t num) {
 	uint8_t i;
 	while(gsUpdateFlag);	// wait until we can modify gsData
   	for (i=0;i<16;i++) TLC5940_SetGS(i, MAX_BRIGHT);
@@ -309,7 +308,7 @@ void setEyesBlinck_d (uint8_t num) {
 	
 }
 
-void setEyesBlinck_i (uint8_t num) {
+void setEyesBlink_i (uint8_t num) { //terminar
 	uint8_t i;
 	while(gsUpdateFlag);	// wait until we can modify gsData
   	for (i=16;i<32;i++) TLC5940_SetGS(i, MAX_BRIGHT);
@@ -343,7 +342,7 @@ void setEyesBlinck_i (uint8_t num) {
 	}
 }
 
-void setEyesUpDown_d (uint8_t num) {
+void setEyesUpDown_d (uint8_t num) { //sube y baja los ojos
 	uint8_t i;
 	while(gsUpdateFlag);	// wait until we can modify gsData
   	for (i=0;i<16;i++) TLC5940_SetGS(i, MAX_BRIGHT*0);
@@ -395,7 +394,7 @@ void setEyesUpDown_i (uint8_t num) { //
 	TLC5940_SetGS(23, MAX_BRIGHT);
 	TLC5940_SetGS(20, MAX_BRIGHT);
 	TLC5940_SetGS(22, MAX_BRIGHT);
-	TLC5940_SetGS(17, MAX_BRIGHT);
+	TLC5940_SetGS(18, MAX_BRIGHT);
 	}
 
 //	TLC5940_SetGSUpdateFlag();
@@ -471,20 +470,39 @@ void setEyesCircleMiddle_i (uint8_t num) { //OJO A LA ALTURA MEDIA DERECHA A IZQ
 //	TLC5940_SetGSUpdateFlag();
 }
 
-void setEyesWink_d (void) { //GUIÑA OJO DERECHO
+void setEyesWink_d (uint8_t num) { //GUIÑA OJO DERECHO
 	uint8_t i;
 	while(gsUpdateFlag);	// wait until we can modify gsData
-  	for (i=0;i<16;i++) TLC5940_SetGS(i, MAX_BRIGHT*0);
-  	for (i=16;i<32;i++) TLC5940_SetGS(i, MAX_BRIGHT);
 
+	if (num == 0) {
+  	for (i=0;i<32;i++) TLC5940_SetGS(i, MAX_BRIGHT);
+	}
+
+	if (num == 1) {
+  	for (i=0;i<16;i++) TLC5940_SetGS(i, MAX_BRIGHT*0);
+	}
+
+	if (num == 2) {
+  	for (i=0;i<16;i++) TLC5940_SetGS(i, MAX_BRIGHT);
+	}
 //	TLC5940_SetGSUpdateFlag();
 }
 
-void setEyesWink_i (void) { //GUIÑA OJO IZQUIERDO
+void setEyesWink_i (uint8_t num) { //GUIÑA OJO IZQUIERDO
 	uint8_t i;
 	while(gsUpdateFlag);	// wait until we can modify gsData
+
+	if (num == 0) {
+  	for (i=0;i<32;i++) TLC5940_SetGS(i, MAX_BRIGHT);
+	}
+
+	if (num == 1) {
   	for (i=16;i<32;i++) TLC5940_SetGS(i, MAX_BRIGHT*0);
-  	for (i=0;i<16;i++) TLC5940_SetGS(i, MAX_BRIGHT);
+	}
+
+	if (num == 2) {
+  	for (i=16;i<32;i++) TLC5940_SetGS(i, MAX_BRIGHT);
+	}
 
 //	TLC5940_SetGSUpdateFlag();
 }
@@ -492,35 +510,7 @@ void setEyesWink_i (void) { //GUIÑA OJO IZQUIERDO
 void setEyesTired (uint8_t num) { //FALTA TERMINAR!!!!
 	uint8_t i;
 	while(gsUpdateFlag);	// wait until we can modify gsData
-  	for (i=0;i<16;i++) TLC5940_SetGS(i, MAX_BRIGHT*0);
-
-	if (num == 0) {
-	TLC5940_SetGS(2, MAX_BRIGHT);
-	TLC5940_SetGS(1, MAX_BRIGHT);
-	TLC5940_SetGS(4, MAX_BRIGHT);
-	TLC5940_SetGS(6, MAX_BRIGHT);
-	}
-	
-	else if (num == 1) {
-	TLC5940_SetGS(4, MAX_BRIGHT);
-	TLC5940_SetGS(2, MAX_BRIGHT);
-	TLC5940_SetGS(6, MAX_BRIGHT);
-	TLC5940_SetGS(8, MAX_BRIGHT);
-	}
-
-	else if (num == 2) {
-	TLC5940_SetGS(8, MAX_BRIGHT);
-	TLC5940_SetGS(6, MAX_BRIGHT);
-	TLC5940_SetGS(11, MAX_BRIGHT);
-	TLC5940_SetGS(10, MAX_BRIGHT);
-	}
-
-	else if (num == 3) {
-	TLC5940_SetGS(10, MAX_BRIGHT);
-	TLC5940_SetGS(11, MAX_BRIGHT);
-	TLC5940_SetGS(14, MAX_BRIGHT);
-	TLC5940_SetGS(12, MAX_BRIGHT);
-	}
-//	TLC5940_SetGSUpdateFlag();
+  	
+	for (i=0;i<32;i++) TLC5940_SetGS(i, MAX_BRIGHT*(1-num/255.0));
 }
 
