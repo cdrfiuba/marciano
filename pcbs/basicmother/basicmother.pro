@@ -1,4 +1,4 @@
-update=Fri 10 Jan 2014 20:07:38 ART
+update=vie 21 feb 2014 19:48:30 ART
 version=1
 last_client=eeschema
 [cvpcb]
@@ -47,7 +47,7 @@ LibName16=valves
 version=1
 [eeschema]
 version=1
-LibDir=../../pcbs
+LibDir=../../pcbs;../../../kicadlibs
 NetFmtName=
 RptD_X=0
 RptD_Y=100
@@ -86,3 +86,4 @@ LibName29=contrib
 LibName30=valves
 LibName31=mbed
 LibName32=zigbit_dual
+LibName33=ptn04050c
