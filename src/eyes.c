@@ -66,9 +66,6 @@ void eyesInit(void){
 	// Enable Timer/Counter0 Compare Match A interrupt
 	TIMSK1 |= (1 << OCIE1A);
 
-	TLC5940_SetAllDC(63);
-	TLC5940_ClockInDC();
-  
   eyesState = E_OFF;
 	// Default all channels to off
 	TLC5940_SetAllGS(0);
