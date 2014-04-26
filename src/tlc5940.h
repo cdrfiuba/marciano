@@ -1,3 +1,5 @@
+#ifndef _TLC5940_H_
+#define _TLC5940_H_
 /*
  
  tlc5940.h
@@ -27,66 +29,48 @@
  
  */
  
-#pragma once
 
 #include <stdint.h>
 #include <avr/io.h>
 
-#define SIN_DDR DDRB
+
+#define SIN_DDR  DDRB
 #define SIN_PORT PORTB
-#define SIN_PIN PB3
+#define SIN_PIN  PB3
 
-#define SCLK_DDR DDRB
+#define SCLK_DDR  DDRB
 #define SCLK_PORT PORTB
-#define SCLK_PIN PB5
+#define SCLK_PIN  PB5
 
-#define BLANK_DDR DDRB
+#define BLANK_DDR  DDRB
 #define BLANK_PORT PORTB
-#define BLANK_PIN PB2
+#define BLANK_PIN  PB2
 
 // The following options are configurable from the Makefile
-#ifndef DCPRG_DDR
-#define DCPRG_DDR DDRD
-#endif
-#ifndef DCPRG_PORT
+#define DCPRG_DDR  DDRD
 #define DCPRG_PORT PORTD
-#endif
-#ifndef DCPRG_PIN
-#define DCPRG_PIN PD4
-#endif
+#define DCPRG_PIN  PD4
 
-#ifndef VPRG_DDR
-#define VPRG_DDR DDRD
-#endif
-#ifndef VPRG_PORT
+#define VPRG_DDR  DDRD
 #define VPRG_PORT PORTD
-#endif
-#ifndef VPRG_PIN
-#define VPRG_PIN PD7
-#endif
+#define VPRG_PIN  PD7
 
-#ifndef XLAT_DDR
-#define XLAT_DDR DDRB
-#endif
-#ifndef XLAT_PORT
+#define XLAT_DDR  DDRB
 #define XLAT_PORT PORTB
-#endif
-#ifndef XLAT_PIN
-#define XLAT_PIN PB1
-#endif
+#define XLAT_PIN  PB1
 
-#ifndef TLC5940_MANUAL_DC_FUNCS
-#define TLC5940_MANUAL_DC_FUNCS 1
-#endif
+// Flag to choose whether to include routines for manually setting the dot
+// correction
+//  0 = Do not include dot correction routines (generates smaller code)
+//  1 = Include dot correction routines (will still read from EEPROM by default)
+#define TLC5940_MANUAL_DC_FUNCS 0
 
-#ifndef TLC5940_N
-#define TLC5940_N 1
-#endif
+// Define the number of TLC5940 chips that are linked in series
+#define TLC5940_N 2
 // --------------------------------------------------------
 
 
 #define MAX_BRIGHT   4095
-
 
 #define setOutput(ddr, pin) ((ddr) |= (1 << (pin)))
 #define setLow(port, pin) ((port) &= ~(1 << (pin)))
@@ -136,3 +120,5 @@ void TLC5940_ClockInDC(void);
 void TLC5940_SetGS(channel_t channel, uint16_t value);
 void TLC5940_SetAllGS(uint16_t value);
 void TLC5940_Init(void);
+
+#endif
