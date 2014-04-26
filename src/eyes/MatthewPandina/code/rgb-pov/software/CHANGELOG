@@ -1,0 +1,8 @@
+Jan 8, 2012
+
+Updated main.c so the data format generated conforms to that of the newest
+multiplexing code in the firmware/ directory, which has some major speed
+improvements.
+
+Note: Any pre-existing data.c file will need to be regenerated using this
+      new png2tlc code.
