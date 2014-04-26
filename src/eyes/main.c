@@ -21,9 +21,14 @@ int main (void)
   unsigned char letter;
   uint16_t counter;
 
+  eyesTest();
+
+  DDRC |= 1<<3;
+
   for(;;) {
     letter = USART0Receive();
     if (letter == 'n')
+      PINC |= 1<<3;
       counter++;
     if (letter == 'p')
       counter--;
