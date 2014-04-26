@@ -1,5 +1,5 @@
-#ifndef __MOUTH_H_
-#define __MOUTH_H_
+#ifndef __EYES_H_
+#define __EYES_H_
 
 #include "tlc5940.h"
 
