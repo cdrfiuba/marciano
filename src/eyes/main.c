@@ -14,25 +14,29 @@ int main (void)
   // Enable Interrupts
   sei();
 
-//  uint16_t baudrate = BAUD_PRESCALER(9600);
-//  USART0Setup(baudrate, USART_CHARSIZE_8BIT,
-//    USART_PARITY_DIS, USART_STOP_1BIT, USART_MODE_ASYNC);
+  USART0Setup(BAUD_PRESCALER(115200), USART_CHARSIZE_8BIT,
+    USART_PARITY_DIS, USART_STOP_1BIT, USART_MODE_ASYNC);
 
   unsigned char letter;
-  uint16_t counter = 0 ;
-
-  DDRC |= 1<<3;
+  uint8_t counter = 0 ;
 
   for(;;) {
-//    letter = USART0Receive();
-//    if (letter == 'n')
-//      PINC |= 1<<3;
-//      counter++;
-//    if (letter == 'p')
-//      counter--;
+    letter = USART0Receive();
+    if (letter == 'n') {
+      if (counter < (CANT_MODES -1))
+        counter++;
+      else
+        counter = 0;
+    }
+    if (letter == 'p') {
+      if (counter > 0)
+        counter--;
+      else
+        counter = CANT_MODES -1;
+    }
 
-//    counter = counter >= CANT_MODES ? 0 : counter;
-//    counter = counter < 0 ? CANT_MODES-1 : counter;
+    counter = counter >= CANT_MODES ? 0 : counter;
+    counter = counter < 0 ? CANT_MODES-1 : counter;
 
     if (counter == 0)
       setEyesAngry();
@@ -54,8 +58,5 @@ int main (void)
       setEyesOn();
     if (counter == 9)
       setEyesOff();
-      
-    _delay_ms(5000);
-    counter = (counter +1) %10;
   }
 }

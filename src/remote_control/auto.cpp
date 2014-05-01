@@ -43,29 +43,31 @@ void wait_for_start(Serial cmdLink) {
 	while (get_command(cmdLink) != START);
 }
 
-int main()
-{
-	// PC connection
-	Serial pc(0, 9600);
+int main() {
+    // PC connection
+    Serial pc(0, 9600);
 	
-	// Turn all leds on while waiting
-	Bus leds(4, LED4, LED3, LED2, LED1);
-	leds.mode(Output);
-	leds.write_all(1);
+    // Turn all leds on while waiting
+    Bus leds(4, LED4, LED3, LED2, LED1);
+    leds.mode(Output);
+    leds.write_all(1);
     
     // Config motors
     Motor motorB (P22, P21, P23);
     Motor motorA (P25, P24, P26);
 
-	// Turn lights on
-    FarolA = 1;
-    FarolB = 1;
+	  // Turn lights on
+    // We don't need de farols on the marciano
+    FarolA = 0;
+    FarolB = 0;
 
-	// The interface with the remote control
-	Serial cmdLink(1, 38400);
+    // The interface with the remote control
+    Serial cmdLink(1, 38400);
 
-	// Read until the control says START
-	wait_for_start(cmdLink);
+    Serial avr(2, 115200);
+
+    // Read until the control says START
+    wait_for_start(cmdLink);
 	
     // Seteo velocidad y direccion del motor A
     motorA.set_sentido(ADELANTE);
@@ -77,132 +79,107 @@ int main()
 
     while (1)
     {
-      //
-            motorA.set_sentido(ADELANTE);
-            motorA.Velocidad = MARCHA_IZQ;
-            motorB.set_sentido(ADELANTE);
-            motorB.Velocidad = MARCHA_DER;
-
-
-            Delay(2);
-
-            motorA.set_sentido(ATRAS);
-            motorA.Velocidad = MARCHA_IZQ;
-            motorB.set_sentido(ATRAS);
-            motorB.Velocidad = MARCHA_DER;
-
-            Delay(2);
-
-            motorA.set_sentido(ADELANTE);
-            motorA.Velocidad = MARCHA_IZQ;
-            motorB.set_sentido(ATRAS);
-            motorB.Velocidad = MARCHA_DER;
-
-            Delay(2);
-
-            motorA.set_sentido(ATRAS);
-            motorA.Velocidad = MARCHA_IZQ;
-            motorB.set_sentido(ADELANTE);
-            motorB.Velocidad = MARCHA_DER;
-
-            Delay(2);
-    /*
         // encendemos los leds de acuerdo con los sensores
         //estado_sensores();
 
-		unsigned char cmd = get_command(cmdLink);
-		leds.write(cmd);
+      unsigned char cmd = get_command(cmdLink);
+      leds.write(cmd);
 
-		// Stop makes the car stop until the next start
-		if (cmd == STOP) {
-            motorA.set_sentido(DETENIDO);
-            motorB.set_sentido(DETENIDO);
-			wait_for_start(cmdLink);
-		} 
-		
-		// Go faster
-		else if (cmd == START) {
-			motorA.Velocidad = 0.9;
-			motorB.Velocidad = 0.9;
-		}
+      // Stop makes the car stop until the next start
+      if (cmd == STOP) {
+              motorA.set_sentido(DETENIDO);
+              motorB.set_sentido(DETENIDO);
+              wait_for_start(cmdLink);
+      } 
+      
+      // Go faster
+      else if (cmd == START) {
+        motorA.Velocidad = 0.9;
+        motorB.Velocidad = 0.9;
+      }
 
-		// Enter line_follower mode
-		else if (cmd == LINE_FOLLOWER) {
-			line_follower(motorA, motorB);
-		} 
-		
-		// Go forward
-		else if (cmd == (CENTER+FORWARD)) {
-            motorA.set_sentido(ADELANTE);
-            motorA.Velocidad = MARCHA_IZQ;
-            motorB.set_sentido(ADELANTE);
-            motorB.Velocidad = MARCHA_DER;
-		} 
-		
-		// Go backward
-		else if (cmd == (CENTER+BACKWARD)) {
-            motorA.set_sentido(ATRAS);
-            motorA.Velocidad = MARCHA_IZQ;
+      // Enter line_follower mode
+      else if (cmd == NEXT_EYE_MODE) {
+        avr.putByte('n');
+      } 
+
+      // Enter line_follower mode
+      else if (cmd == PREV_EYE_MODE) {
+        avr.putByte('p');
+      } 
+      
+
+      // Go forward
+      else if (cmd == (CENTER+FORWARD)) {
+              motorA.set_sentido(ADELANTE);
+              motorA.Velocidad = MARCHA_IZQ;
+              motorB.set_sentido(ADELANTE);
+              motorB.Velocidad = MARCHA_DER;
+      } 
+      
+      // Go backward
+      else if (cmd == (CENTER+BACKWARD)) {
+              motorA.set_sentido(ATRAS);
+              motorA.Velocidad = MARCHA_IZQ;
+              motorB.set_sentido(ATRAS);
+              motorB.Velocidad = MARCHA_DER;
+      } 
+      
+      // Go left
+      else if (cmd > LEFT && cmd < RIGHT) {
+              motorB.set_sentido(ADELANTE);
+        float f = (cmd - LEFT) / 10.;
+        if (f > 0.7) {
+                  motorA.set_sentido(ATRAS);
+                  motorA.Velocidad = MARCHA_IZQ*(f-0.2);
+                  motorB.Velocidad = MARCHA_DER*(f-0.2);
+        } else {
+          motorA.set_sentido(ADELANTE);
+          motorA.Velocidad = MARCHA_IZQ*(0.7-f);
+          motorB.Velocidad = MARCHA_DER*(1+f);
+        }
+      } 
+      
+      // Go right
+      else if (cmd > RIGHT && cmd < BACKWARD) {
+              motorA.set_sentido(ADELANTE);
+        float f = (cmd - RIGHT) / 10.;
+        if (f > 0.7) {
+                motorB.set_sentido(ATRAS);
+          motorA.Velocidad = MARCHA_IZQ*(f-0.2);
+              motorB.Velocidad = MARCHA_DER*(f-0.2);
+        } else {
+                motorB.set_sentido(ADELANTE);
+          motorA.Velocidad = MARCHA_IZQ*(1+f);
+              motorB.Velocidad = MARCHA_DER*(0.7-f);
+        }
+      } else {
+        cmd -= BACKWARD;
+        if (cmd > LEFT && cmd < RIGHT) {
+          float f = (cmd - LEFT) / 10.;
             motorB.set_sentido(ATRAS);
-            motorB.Velocidad = MARCHA_DER;
-		} 
-		
-		// Go left
-		else if (cmd > LEFT && cmd < RIGHT) {
-            motorB.set_sentido(ADELANTE);
-			float f = (cmd - LEFT) / 10.;
-			if (f > 0.7) {
-                motorA.set_sentido(ATRAS);
-                motorA.Velocidad = MARCHA_IZQ*(f-0.2);
+          if (f > 0.7) {
+                    motorA.set_sentido(ADELANTE);
+                  motorA.Velocidad = MARCHA_IZQ*(f-0.2);
+              motorB.Velocidad = MARCHA_DER*(f-0.2);
+          } else {
+                    motorA.set_sentido(ATRAS);
+                  motorA.Velocidad = MARCHA_IZQ*(0.9-f);
+              motorB.Velocidad = MARCHA_DER*(1+f);
+          }
+        } else {
+          float f = (cmd - RIGHT) / 10.;
+          motorA.set_sentido(ATRAS);
+          if (f > 0.7) {
+                  motorB.set_sentido(ADELANTE);
+                    motorA.Velocidad = MARCHA_IZQ*(f-0.2);
                 motorB.Velocidad = MARCHA_DER*(f-0.2);
-			} else {
-				motorA.set_sentido(ADELANTE);
-				motorA.Velocidad = MARCHA_IZQ*(0.7-f);
-				motorB.Velocidad = MARCHA_DER*(1+f);
-			}
-		} 
-		
-		// Go right
-		else if (cmd > RIGHT && cmd < BACKWARD) {
-            motorA.set_sentido(ADELANTE);
-			float f = (cmd - RIGHT) / 10.;
-			if (f > 0.7) {
-	            motorB.set_sentido(ATRAS);
-				motorA.Velocidad = MARCHA_IZQ*(f-0.2);
-		        motorB.Velocidad = MARCHA_DER*(f-0.2);
-			} else {
-	            motorB.set_sentido(ADELANTE);
-				motorA.Velocidad = MARCHA_IZQ*(1+f);
-		        motorB.Velocidad = MARCHA_DER*(0.7-f);
-			}
-		} else {
-			cmd -= BACKWARD;
-			if (cmd > LEFT && cmd < RIGHT) {
-				float f = (cmd - LEFT) / 10.;
-			    motorB.set_sentido(ATRAS);
-				if (f > 0.7) {
-	                motorA.set_sentido(ADELANTE);
-		            motorA.Velocidad = MARCHA_IZQ*(f-0.2);
-				    motorB.Velocidad = MARCHA_DER*(f-0.2);
-				} else {
-	                motorA.set_sentido(ATRAS);
-		            motorA.Velocidad = MARCHA_IZQ*(0.9-f);
-				    motorB.Velocidad = MARCHA_DER*(1+f);
-				}
-			} else {
-				float f = (cmd - RIGHT) / 10.;
-				motorA.set_sentido(ATRAS);
-				if (f > 0.7) {
-		            motorB.set_sentido(ADELANTE);
-	                motorA.Velocidad = MARCHA_IZQ*(f-0.2);
-			        motorB.Velocidad = MARCHA_DER*(f-0.2);
-				} else {
-		            motorB.set_sentido(ATRAS);
-	                motorA.Velocidad = MARCHA_IZQ*(1+f);
-			        motorB.Velocidad = MARCHA_DER*(0.9-f);
-				}
-			}
-		}
-    */
+          } else {
+                  motorB.set_sentido(ATRAS);
+                    motorA.Velocidad = MARCHA_IZQ*(1+f);
+                motorB.Velocidad = MARCHA_DER*(0.9-f);
+          }
+        }
+      }
     }
 }
