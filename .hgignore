@@ -9,4 +9,4 @@ syntax: glob
 *.orig
 *.hex
 *bak
-
+-cache.lib
