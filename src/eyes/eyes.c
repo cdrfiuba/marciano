@@ -18,6 +18,7 @@
 
 //uint8_t indexorden[numChannels];
 uint8_t t; //tiempo;
+uint8_t contando;
 
 
 typedef enum EyesS_t {
@@ -118,7 +119,7 @@ ISR(TIMER1_COMPA_vect){
       if (t==25) {
         EyesBlink_d (iterate);
         EyesBlink_i (iterate);
-        iterate = (iterate + 1) % 4;
+        iterate = (iterate + 1) % 5;
         t=0;
       }
       t++;
@@ -155,7 +156,19 @@ ISR(TIMER1_COMPA_vect){
     case E_TIRED:
       if (t==1) {
         EyesTired (iterate);
-        iterate = (iterate + 1);
+        if (contando==0) {
+          iterate = (iterate + 1);
+          if (iterate==255){
+            contando=1;
+            }
+          }
+        else {
+          iterate = (iterate - 1);
+          if (iterate==0) {
+            contando=0;
+            }
+          }
+               
         t=0;
       }
       t++;
@@ -314,18 +327,32 @@ void EyesBlink_d (uint8_t num) {
   for (i=0;i<16;i++) TLC5940_SetGS(i, MAX_BRIGHT);
 
   if (num == 0) {
+  }
+  
+  if (num == 1) {
     TLC5940_SetGS(5, MAX_BRIGHT*0);
     TLC5940_SetGS(7, MAX_BRIGHT*0);
   }
 
-  else if (num == 1) {
+  else if (num == 2) {
+    TLC5940_SetGS(5, MAX_BRIGHT*0);
+    TLC5940_SetGS(7, MAX_BRIGHT*0);
+    
     TLC5940_SetGS(2, MAX_BRIGHT*0);
     TLC5940_SetGS(6, MAX_BRIGHT*0);
     TLC5940_SetGS(10, MAX_BRIGHT*0);
     TLC5940_SetGS(12, MAX_BRIGHT*0);
   }
 
-  else if (num == 2) {
+  else if (num == 3) {
+    TLC5940_SetGS(5, MAX_BRIGHT*0);
+    TLC5940_SetGS(7, MAX_BRIGHT*0);
+    
+    TLC5940_SetGS(2, MAX_BRIGHT*0);
+    TLC5940_SetGS(6, MAX_BRIGHT*0);
+    TLC5940_SetGS(10, MAX_BRIGHT*0);
+    TLC5940_SetGS(12, MAX_BRIGHT*0);
+    
     TLC5940_SetGS(1, MAX_BRIGHT*0);
     TLC5940_SetGS(11, MAX_BRIGHT*0);
     TLC5940_SetGS(14, MAX_BRIGHT*0);
@@ -333,7 +360,21 @@ void EyesBlink_d (uint8_t num) {
     TLC5940_SetGS(4, MAX_BRIGHT*0);
   }
 
-  else if (num == 3) {
+  else if (num == 4) {
+    TLC5940_SetGS(5, MAX_BRIGHT*0);
+    TLC5940_SetGS(7, MAX_BRIGHT*0);
+    
+    TLC5940_SetGS(2, MAX_BRIGHT*0);
+    TLC5940_SetGS(6, MAX_BRIGHT*0);
+    TLC5940_SetGS(10, MAX_BRIGHT*0);
+    TLC5940_SetGS(12, MAX_BRIGHT*0);
+    
+    TLC5940_SetGS(1, MAX_BRIGHT*0);
+    TLC5940_SetGS(11, MAX_BRIGHT*0);
+    TLC5940_SetGS(14, MAX_BRIGHT*0);
+    TLC5940_SetGS(8, MAX_BRIGHT*0);
+    TLC5940_SetGS(4, MAX_BRIGHT*0);
+    
     TLC5940_SetGS(0, MAX_BRIGHT*0);
     TLC5940_SetGS(3, MAX_BRIGHT*0);
     TLC5940_SetGS(9, MAX_BRIGHT*0);
@@ -349,18 +390,32 @@ void EyesBlink_i (uint8_t num) { //terminar
   for (i=16;i<32;i++) TLC5940_SetGS(i, MAX_BRIGHT);
 
   if (num == 0) {
+  }
+
+  if (num == 1) {
     TLC5940_SetGS(26, MAX_BRIGHT*0);
     TLC5940_SetGS(24, MAX_BRIGHT*0);
   }
 
-  else if (num == 1) {
+  else if (num == 2) {
+    TLC5940_SetGS(26, MAX_BRIGHT*0);
+    TLC5940_SetGS(24, MAX_BRIGHT*0);
+  
     TLC5940_SetGS(19, MAX_BRIGHT*0);
     TLC5940_SetGS(21, MAX_BRIGHT*0);
     TLC5940_SetGS(25, MAX_BRIGHT*0);
     TLC5940_SetGS(29, MAX_BRIGHT*0);
   }
 
-  else if (num == 2) {
+  else if (num == 3) {
+    TLC5940_SetGS(26, MAX_BRIGHT*0);
+    TLC5940_SetGS(24, MAX_BRIGHT*0);
+  
+    TLC5940_SetGS(19, MAX_BRIGHT*0);
+    TLC5940_SetGS(21, MAX_BRIGHT*0);
+    TLC5940_SetGS(25, MAX_BRIGHT*0);
+    TLC5940_SetGS(29, MAX_BRIGHT*0);  
+  
     TLC5940_SetGS(17, MAX_BRIGHT*0);
     TLC5940_SetGS(20, MAX_BRIGHT*0);
     TLC5940_SetGS(23, MAX_BRIGHT*0);
@@ -368,7 +423,21 @@ void EyesBlink_i (uint8_t num) { //terminar
     TLC5940_SetGS(30, MAX_BRIGHT*0);
   }
 
-  else if (num == 3) {
+  else if (num == 4) {
+    TLC5940_SetGS(26, MAX_BRIGHT*0);
+    TLC5940_SetGS(24, MAX_BRIGHT*0);
+  
+    TLC5940_SetGS(19, MAX_BRIGHT*0);
+    TLC5940_SetGS(21, MAX_BRIGHT*0);
+    TLC5940_SetGS(25, MAX_BRIGHT*0);
+    TLC5940_SetGS(29, MAX_BRIGHT*0);  
+  
+    TLC5940_SetGS(17, MAX_BRIGHT*0);
+    TLC5940_SetGS(20, MAX_BRIGHT*0);
+    TLC5940_SetGS(23, MAX_BRIGHT*0);
+    TLC5940_SetGS(27, MAX_BRIGHT*0);
+    TLC5940_SetGS(30, MAX_BRIGHT*0);  
+  
     TLC5940_SetGS(16, MAX_BRIGHT*0);
     TLC5940_SetGS(18, MAX_BRIGHT*0);
     TLC5940_SetGS(22, MAX_BRIGHT*0);
@@ -569,10 +638,11 @@ void EyesWink_i (uint8_t num) { //GUIÑA OJO IZQUIERDO
 void setEyesTired (void) {
   eyesState = E_TIRED;
   iterate=0;
+  contando=0;
   t=0;
 }
 
-void EyesTired (uint8_t num) { //FALTA TERMINAR!!!!
+void EyesTired (uint8_t num) { 
   uint8_t i;
   while(gsUpdateFlag);	// wait until we can modify gsData
 

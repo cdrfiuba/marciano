@@ -3,6 +3,9 @@
 #include "car_commands.h"
 #include <stdio.h>
 
+
+bool moving;
+
 void show_angle(Bus pins, float x) {
 
     int vel = (int)(x * 10);
@@ -20,12 +23,12 @@ unsigned char get_command(float *vect, Pin left, Pin right)
     unsigned char r = 0;
 
     // Buttons are inverse enabled
-    if (left == 0) {
-         r = STOP;  // Stop
-    } 
-    if (right == 0) {
-         r += START; // Start (line follower if Stop+Start)
-    }
+    if (left == 0) 
+      r = STOP;
+    else if ((right == 0) & (left == 1))
+      r = START;
+    else if ( right == 0 & left == 0)
+      r = NEXT_EYE_MODE; // Start (line follower if Stop+Start)
 
     // If buttons are enabled, return now.
     if (r != 0) return r;
@@ -71,7 +74,7 @@ int main() {
 
     // Serial port through USB
     Serial pc(0, 9600);   
-
+    moving = false;
     // Zigbit connection
     Serial cmdLink(1, 38400);
 
@@ -84,7 +87,7 @@ int main() {
     Pin right(P20, 2, Input, PullUp);
 
     // Small pause before callibration
-	Delay(1);
+	  Delay(1);
     // Create and initialize Accelerometer
     Accelerometer acer(2);
     
