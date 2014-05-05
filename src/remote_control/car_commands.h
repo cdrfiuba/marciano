@@ -5,7 +5,7 @@
 #define START          1
 #define STOP           2
 #define NEXT_EYE_MODE  3
-#define PREV_EYE_MODE  3
+#define PREV_EYE_MODE  4
 
 #define CENTER        10
 #define LEFT          20

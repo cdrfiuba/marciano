@@ -19,10 +19,12 @@ int main (void)
 
   unsigned char letter;
   uint8_t counter = 0 ;
+  DDRC |= 1<<3;
 
   for(;;) {
     letter = USART0Receive();
     if (letter == 'n') {
+      PINC |= 1<<3;
       if (counter < (CANT_MODES -1))
         counter++;
       else
