@@ -1,5 +1,5 @@
 #include "libmanyuc.h"
-#include "i2c_accelerometer.h"
+#include "mma7455l.h"
 #include "car_commands.h"
 #include <stdio.h>
 
@@ -25,11 +25,14 @@ unsigned char get_command(float *vect, Pin left, Pin right)
     // Buttons are inverse enabled
     if (left == 0) 
       r = STOP;
-    else if ((right == 0) & (left == 1))
+    if (right == 0)
+      r += START;
+/*
+ * else if ((right == 0) & (left == 1))
       r = START;
-    else if ( right == 0 & left == 0)
+    else if ( (right == 0) & (left == 0))
       r = NEXT_EYE_MODE; // Start (line follower if Stop+Start)
-
+*/
     // If buttons are enabled, return now.
     if (r != 0) return r;
     

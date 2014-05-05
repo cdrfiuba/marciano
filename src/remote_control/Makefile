@@ -8,7 +8,7 @@
 # For each target, specify project name and the list of the objects files 
 # to be compiled/assembled
 PROJECT1 = remote_control
-OBJECTS1 = control.o i2c_accelerometer.o
+OBJECTS1 = control.o mma7455l.o
 
 PROJECT2 = controlled_car
 OBJECTS2 = auto.o
