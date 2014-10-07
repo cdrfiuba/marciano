@@ -35,6 +35,8 @@ void USART0Setup(uint16_t baudrate, uint8_t char_size, uint8_t parity, uint8_t s
 
   UCSR0B |= (((char_size>>2)&0x01)<<UCSZ02);
 	UCSR0C |= ((char_size&0x03)<<UCSZ00);
+
+  DDRC |= 1<<2;
 #ifdef USART0_INTERRUPT
     UCSR0B |= (1<<RXCIE0) | (1<<UDRIE0);
 
@@ -47,6 +49,7 @@ void USART0Setup(uint16_t baudrate, uint8_t char_size, uint8_t parity, uint8_t s
 }
 
 unsigned char USART0Receive(void){
+    PINC |= 1<<2; //debug de usart, por cada dato recivido se prende el led 1 de la placa.
 #ifdef USART0_INTERRUPT
     unsigned char c;
     while(USART0RXBuffLen() == 0);

@@ -9,22 +9,24 @@
 
 int main (void)
 {
+  _delay_ms(2000);
   eyesInit();
-
-  // Enable Interrupts
-  sei();
 
   USART0Setup(BAUD_PRESCALER(115200), USART_CHARSIZE_8BIT,
     USART_PARITY_DIS, USART_STOP_1BIT, USART_MODE_ASYNC);
 
+  // Enable Interrupts
+  sei();
+
   unsigned char letter;
   uint8_t counter = 0 ;
+  setEyesAngry();
   DDRC |= 1<<3;
 
   for(;;) {
     letter = USART0Receive();
     if (letter == 'n') {
-      PINC |= 1<<3;
+      PINC |= 1<<3; //si recive una N, se invierte el led 0 de la placa (ademas el led 1 se invierte con cualquier dato nuevo).
       if (counter < (CANT_MODES -1))
         counter++;
       else
