@@ -1,6 +1,6 @@
-update=vie 21 feb 2014 19:48:30 ART
+update=vie 06 feb 2015 21:38:37 ART
 version=1
-last_client=eeschema
+last_client=kicad
 [cvpcb]
 version=1
 NetIExt=net
@@ -48,11 +48,6 @@ version=1
 [eeschema]
 version=1
 LibDir=../../pcbs;../../../kicadlibs
-NetFmtName=
-RptD_X=0
-RptD_Y=100
-RptLab=1
-LabSize=60
 [eeschema/libraries]
 LibName1=power
 LibName2=device
@@ -87,3 +82,4 @@ LibName30=valves
 LibName31=mbed
 LibName32=zigbit_dual
 LibName33=ptn04050c
+LibName34=ptn78000w
