@@ -1,0 +1,288 @@
+# EESchema Netlist Version 1.1 created  Thu 27 Jan 2011 22:15:53 ART
+(
+ ( /4D40792D $noname  SW1 ON/OFF {Lib=SPST}
+  (    1 +BATT )
+  (    2 N-000076 )
+ )
+ ( /4D39DC47 $noname  P4 BTN_DER {Lib=CONN_2}
+  (    1 /GND )
+  (    2 /BTN_DER )
+ )
+ ( /4D39DC3E $noname  P3 BTN_IZQ {Lib=CONN_2}
+  (    1 /GND )
+  (    2 /BTN_IZQ )
+ )
+ ( /4D376AC7 $noname  R3 2k2 {Lib=R}
+  (    1 +3.3V )
+  (    2 /SDA )
+ )
+ ( /4D376AC1 $noname  R2 2k2 {Lib=R}
+  (    1 +3.3V )
+  (    2 /SCL )
+ )
+ ( /4D375962 $noname  R1 inf {Lib=R}
+  (    1 N-000053 )
+  (    2 /GND )
+ )
+ ( /4D375928 $noname  C2 100uF {Lib=CAPAPOL}
+  (    1 +5V )
+  (    2 /GND )
+ )
+ ( /4D37591E $noname  C1 100uF {Lib=CAPAPOL}
+  (    1 N-000076 )
+  (    2 /GND )
+ )
+ ( /4D375881 $noname  P1 BATT {Lib=CONN_2}
+  (    1 +BATT )
+  (    2 /GND )
+ )
+ ( /4D375826 $noname  P2 DIPSWITCH {Lib=DIL16}
+  (    1 /DIPSW_1 )
+  (    2 /DIPSW_2 )
+  (    3 /DIPSW_3 )
+  (    4 /DIPSW_4 )
+  (    5 /DIPSW_5 )
+  (    6 /DIPSW_6 )
+  (    7 /DIPSW_7 )
+  (    8 /DIPSW_8 )
+  (    9 /GND )
+  (   10 /GND )
+  (   11 /GND )
+  (   12 /GND )
+  (   13 /GND )
+  (   14 /GND )
+  (   15 /GND )
+  (   16 /GND )
+ )
+ ( /4D375714 $noname  U4 MMA7455L_DIP8 {Lib=MMA7455L_DIP8}
+  (    1 +3.3V )
+  (    2 /ACEL_INT1 )
+  (    3 /ACEL_INT2 )
+  (    4 /GND )
+  (    5 /SDA )
+  (    6 /SCL )
+  (    7 /GND )
+  (    8 +3.3V )
+ )
+ ( /4D3756F7 $noname  U1 PTN4050 {Lib=PTN4050}
+  (    1 /GND )
+  (    2 N-000076 )
+  (    3 N-000053 )
+  (    4 +5V )
+ )
+ ( /4D3756DA $noname  U2 MBED {Lib=MBED}
+  (    1 /GND )
+  (    2 +5V )
+  (    3 ? )
+  (    4 ? )
+  (    5 ? )
+  (    6 ? )
+  (    7 ? )
+  (    8 /ZB_RESET )
+  (    9 /ACEL_INT1 )
+  (   10 /ACEL_INT2 )
+  (   11 ? )
+  (   12 ? )
+  (   13 /ZIGBIT_TX )
+  (   14 /ZIGBIT_RX )
+  (   15 ? )
+  (   16 ? )
+  (   17 ? )
+  (   18 ? )
+  (   19 /BTN_IZQ )
+  (   20 /BTN_DER )
+  (   21 ? )
+  (   22 ? )
+  (   23 ? )
+  (   24 ? )
+  (   25 ? )
+  (   26 ? )
+  (   27 /SCL )
+  (   28 /SDA )
+  (   29 ? )
+  (   30 ? )
+  (   31 ? )
+  (   32 ? )
+  (   33 ? )
+  (   34 ? )
+  (   35 ? )
+  (   36 ? )
+  (   37 ? )
+  (   38 ? )
+  (   39 ? )
+  (   40 +3.3V )
+ )
+ ( /4D3756BD $noname  U3 ZIGBIT_DUAL_DIP {Lib=ZIGBIT_DUAL_DIP}
+  (    1 ? )
+  (    2 ? )
+  (    3 ? )
+  (    4 /DIPSW_1 )
+  (    5 /DIPSW_2 )
+  (    6 /DIPSW_3 )
+  (    7 ? )
+  (    8 /ZB_RESET )
+  (    9 ? )
+  (   10 ? )
+  (   11 ? )
+  (   12 /ZIGBIT_TX )
+  (   13 /ZIGBIT_RX )
+  (   14 ? )
+  (   15 ? )
+  (   16 /DIPSW_4 )
+  (   17 /DIPSW_5 )
+  (   18 /DIPSW_6 )
+  (   19 ? )
+  (   20 ? )
+  (   21 /GND )
+  (   22 +3.3V )
+  (   23 ? )
+  (   24 ? )
+  (   25 ? )
+  (   26 ? )
+  (   27 ? )
+  (   28 ? )
+  (   29 ? )
+  (   30 ? )
+  (   31 ? )
+  (   32 /GND )
+  (   33 /DIPSW_7 )
+  (   34 ? )
+  (   35 ? )
+  (   36 ? )
+  (   37 ? )
+  (   38 /DIPSW_8 )
+  (   39 ? )
+  (   40 ? )
+ )
+)
+*
+{ Allowed footprints by component:
+$component R3
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R2
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R1
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component C2
+ CP*
+ SM*
+$endlist
+$component C1
+ CP*
+ SM*
+$endlist
+$endfootprintlist
+}
+{ Pin List by Nets
+Net 1 "/SCL" "SCL"
+ U2 27
+ R2 2
+ U4 6
+Net 2 "+BATT" "+BATT"
+ P1 1
+ SW1 1
+Net 3 "/GND" "GND"
+ U3 32
+ U3 21
+ U4 4
+ U4 7
+ U1 1
+ U2 1
+ P3 1
+ C1 2
+ P1 2
+ P2 9
+ P2 10
+ P2 11
+ P2 12
+ P2 13
+ P2 14
+ P2 15
+ P2 16
+ R1 2
+ C2 2
+ P4 1
+Net 4 "/ACEL_INT1" "ACEL_INT1"
+ U4 2
+ U2 9
+Net 12 "/DIPSW_1" "DIPSW_1"
+ P2 1
+ U3 4
+Net 13 "/DIPSW_2" "DIPSW_2"
+ U3 5
+ P2 2
+Net 14 "/DIPSW_3" "DIPSW_3"
+ P2 3
+ U3 6
+Net 15 "/DIPSW_4" "DIPSW_4"
+ U3 16
+ P2 4
+Net 16 "/DIPSW_5" "DIPSW_5"
+ U3 17
+ P2 5
+Net 17 "/DIPSW_6" "DIPSW_6"
+ U3 18
+ P2 6
+Net 18 "/DIPSW_7" "DIPSW_7"
+ U3 33
+ P2 7
+Net 19 "/DIPSW_8" "DIPSW_8"
+ U3 38
+ P2 8
+Net 20 "/ZIGBIT_TX" "ZIGBIT_TX"
+ U3 12
+ U2 13
+Net 25 "/ZB_RESET" "ZB_RESET"
+ U3 8
+ U2 8
+Net 45 "/BTN_DER" "BTN_DER"
+ P4 2
+ U2 20
+Net 46 "/ACEL_INT2" "ACEL_INT2"
+ U2 10
+ U4 3
+Net 52 "+5V" "+5V"
+ C2 1
+ U2 2
+ U1 4
+Net 53 "" ""
+ U1 3
+ R1 1
+Net 65 "/ZIGBIT_RX" "ZIGBIT_RX"
+ U2 14
+ U3 13
+Net 74 "+3.3V" "+3.3V"
+ R2 1
+ R3 1
+ U4 1
+ U3 22
+ U4 8
+ U2 40
+Net 75 "/SDA" "SDA"
+ U4 5
+ U2 28
+ R3 2
+Net 76 "" ""
+ U1 2
+ C1 1
+ SW1 2
+Net 77 "/BTN_IZQ" "BTN_IZQ"
+ U2 19
+ P3 2
+}
+#End
