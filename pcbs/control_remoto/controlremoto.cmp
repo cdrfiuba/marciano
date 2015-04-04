@@ -1,0 +1,101 @@
+Cmp-Mod V01 Created by CvPCB (2010-03-14)-final date = mié 26 ene 2011 16:47:37 ART
+
+BeginCmp
+TimeStamp = /4D37591E;
+Reference = C1;
+ValeurCmp = 100uF;
+IdModule  = C1V5;
+EndCmp
+
+BeginCmp
+TimeStamp = /4D375928;
+Reference = C2;
+ValeurCmp = 100uF;
+IdModule  = C1V5;
+EndCmp
+
+BeginCmp
+TimeStamp = /4D375881;
+Reference = P1;
+ValeurCmp = BATT;
+IdModule  = molex_2_recto;
+EndCmp
+
+BeginCmp
+TimeStamp = /4D375826;
+Reference = P2;
+ValeurCmp = DIPSWITCH;
+IdModule  = DIP-16__300;
+EndCmp
+
+BeginCmp
+TimeStamp = /4D39DC3E;
+Reference = P3;
+ValeurCmp = BTN_IZQ;
+IdModule  = molex_2_recto;
+EndCmp
+
+BeginCmp
+TimeStamp = /4D39DC47;
+Reference = P4;
+ValeurCmp = BTN_DER;
+IdModule  = molex_2_recto;
+EndCmp
+
+BeginCmp
+TimeStamp = /4D375962;
+Reference = R1;
+ValeurCmp = inf;
+IdModule  = R3;
+EndCmp
+
+BeginCmp
+TimeStamp = /4D376AC1;
+Reference = R2;
+ValeurCmp = 2k2;
+IdModule  = R3;
+EndCmp
+
+BeginCmp
+TimeStamp = /4D376AC7;
+Reference = R3;
+ValeurCmp = 2k2;
+IdModule  = R3;
+EndCmp
+
+BeginCmp
+TimeStamp = /4D40792D;
+Reference = SW1;
+ValeurCmp = ON/OFF;
+IdModule  = PIN_ARRAY_2X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /4D3756F7;
+Reference = U1;
+ValeurCmp = PTN4050;
+IdModule  = PTN04050CAH;
+EndCmp
+
+BeginCmp
+TimeStamp = /4D3756DA;
+Reference = U2;
+ValeurCmp = MBED;
+IdModule  = MBED-DOBLE;
+EndCmp
+
+BeginCmp
+TimeStamp = /4D3756BD;
+Reference = U3;
+ValeurCmp = ZIGBIT_DUAL_DIP;
+IdModule  = ZIGBIT_DIP_40;
+EndCmp
+
+BeginCmp
+TimeStamp = /4D375714;
+Reference = U4;
+ValeurCmp = MMA7455L_DIP8;
+IdModule  = DIP-8__300;
+EndCmp
+
+EndListe
