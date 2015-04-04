@@ -34,6 +34,9 @@ LIBS:zigbit_dual
 LIBS:ptn04050c
 LIBS:ptn78000w
 LIBS:drv8432
+LIBS:lm4950
+LIBS:drv8843
+LIBS:lmz12002
 LIBS:basicmother-cache
 EELAYER 25 0
 EELAYER END
@@ -50,494 +53,398 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 Wire Wire Line
-	2000 3000 2150 3000
+	2000 3000 2350 3000
 Wire Wire Line
-	2000 2600 2150 2600
+	2000 2600 2350 2600
 Wire Wire Line
-	9300 3350 7850 3350
-Connection ~ 9000 2650
+	2000 2400 2350 2400
 Wire Wire Line
-	9450 2650 8650 2650
-Wire Wire Line
-	6950 4650 7850 4650
-Wire Wire Line
-	6950 3550 7850 3550
-Connection ~ 8100 3650
-Wire Wire Line
-	9300 3650 7450 3650
-Wire Wire Line
-	8100 4050 6950 4050
-Wire Wire Line
-	7450 4350 7450 4550
-Wire Wire Line
-	8250 5800 9900 5800
-Wire Wire Line
-	8650 2250 8650 2200
-Connection ~ 4500 1800
-Wire Wire Line
-	3950 1800 6150 1800
-Wire Wire Line
-	4850 6400 5450 6400
-Wire Wire Line
-	2150 7100 2150 6700
-Connection ~ 5050 1800
-Connection ~ 5600 1800
-Wire Wire Line
-	4150 3350 4300 3350
-Wire Wire Line
-	4300 3350 4300 3850
-Wire Wire Line
-	4300 3850 5050 3850
-Connection ~ 4150 4050
-Wire Wire Line
-	4650 3950 5050 3950
-Wire Wire Line
-	6950 4450 6950 4550
-Wire Wire Line
-	7850 4650 7850 4850
-Wire Wire Line
-	7450 4850 6950 4850
-Wire Wire Line
-	7450 3350 6950 3350
-Wire Wire Line
-	7850 3550 7850 3350
-Wire Wire Line
-	6950 3650 6950 3750
-Wire Wire Line
-	4150 4050 5050 4050
-Wire Wire Line
-	4550 4200 4550 4150
-Wire Wire Line
-	4550 4150 5050 4150
-Wire Wire Line
-	4150 3850 4150 4200
-Connection ~ 4150 3950
-Connection ~ 5050 1400
-Connection ~ 5600 1400
-Wire Wire Line
-	7450 4350 6950 4350
-Wire Wire Line
-	4850 6000 5450 6000
-Wire Wire Line
-	3950 1400 6150 1400
-Connection ~ 4500 1400
-Wire Wire Line
-	9000 2650 9000 2400
-Wire Wire Line
-	8650 1700 9000 1700
-Wire Wire Line
-	9000 1700 9000 2000
-Connection ~ 9350 5800
-Connection ~ 8800 5800
-Connection ~ 9350 6200
-Connection ~ 8800 6200
-Wire Wire Line
-	8250 6200 9900 6200
-Wire Wire Line
-	6950 3850 7450 3850
-Wire Wire Line
-	8100 4150 6950 4150
-Wire Wire Line
-	7450 3850 7450 3650
-Connection ~ 8100 4550
-Wire Wire Line
-	7850 4850 9300 4850
-Wire Wire Line
-	7450 4550 9300 4550
-Wire Wire Line
-	2000 2400 2150 2400
-Wire Wire Line
-	2000 2800 2150 2800
-Text Label 2150 3000 0    60   ~ 0
-OUT_D
-Text Label 2150 2800 0    60   ~ 0
-OUT_C
-Text Label 2150 2600 0    60   ~ 0
-OUT_B
-Text Label 2150 2400 0    60   ~ 0
-OUT_A
+	2000 2800 2350 2800
 Text HLabel 2000 3000 0    60   UnSpc ~ 0
-MOUT_D
+MOUT_B2
 Text HLabel 2000 2800 0    60   UnSpc ~ 0
-MOUT_C
+MOUT_B1
 Text HLabel 2000 2600 0    60   UnSpc ~ 0
-MOUT_B
+MOUT_A2
 Text HLabel 2000 2400 0    60   UnSpc ~ 0
-MOUT_A
+MOUT_A1
 Text Notes 1350 950  0    60   ~ 0
 Power and motor connections
-Text Label 9300 4850 0    60   ~ 0
-OUT_D
-Text Label 9300 4550 0    60   ~ 0
-OUT_C
-Text Label 9300 3650 0    60   ~ 0
-OUT_B
-Text Label 9300 3350 0    60   ~ 0
-OUT_A
-Text Label 9450 2650 0    60   ~ 0
-DGND
-$Comp
-L C CPVDD_C?
-U 1 1 54DEF18A
-P 9350 6000
-F 0 "CPVDD_C?" H 9400 6100 50  0000 L CNN
-F 1 "100 nF" H 9400 5900 50  0000 L CNN
-F 2 "" H 9350 6000 60  0001 C CNN
-F 3 "" H 9350 6000 60  0001 C CNN
-	1    9350 6000
-	1    0    0    -1  
-$EndComp
-$Comp
-L C CPVDD_D?
-U 1 1 54DEF18B
-P 9900 6000
-F 0 "CPVDD_D?" H 9950 6100 50  0000 L CNN
-F 1 "100 nF" H 9950 5900 50  0000 L CNN
-F 2 "" H 9900 6000 60  0001 C CNN
-F 3 "" H 9900 6000 60  0001 C CNN
-	1    9900 6000
-	1    0    0    -1  
-$EndComp
-Text Label 9900 5800 0    60   ~ 0
-PVDD
-$Comp
-L C CPVDD_B?
-U 1 1 54DEF18C
-P 8800 6000
-F 0 "CPVDD_B?" H 8850 6100 50  0000 L CNN
-F 1 "100 nF" H 8850 5900 50  0000 L CNN
-F 2 "" H 8800 6000 60  0001 C CNN
-F 3 "" H 8800 6000 60  0001 C CNN
-	1    8800 6000
-	1    0    0    -1  
-$EndComp
-$Comp
-L C CPVDD_A?
-U 1 1 54DEF18D
-P 8250 6000
-F 0 "CPVDD_A?" H 8300 6100 50  0000 L CNN
-F 1 "100 nF" H 8300 5900 50  0000 L CNN
-F 2 "" H 8250 6000 60  0001 C CNN
-F 3 "" H 8250 6000 60  0001 C CNN
-	1    8250 6000
-	1    0    0    -1  
-$EndComp
-Text Label 9900 6200 0    60   ~ 0
-DGND
-Text Label 9000 1700 0    60   ~ 0
-PVDD
-Text Label 9000 2650 0    60   ~ 0
-PGND
-$Comp
-L R RPVDD?
-U 1 1 54DEF18E
-P 8650 1950
-F 0 "RPVDD?" V 8730 1950 50  0000 C CNN
-F 1 "3.3" V 8650 1950 50  0000 C CNN
-F 2 "" H 8650 1950 60  0001 C CNN
-F 3 "" H 8650 1950 60  0001 C CNN
-	1    8650 1950
-	1    0    0    -1  
-$EndComp
-$Comp
-L C CPVDD?
-U 1 1 54DEF18F
-P 8650 2450
-F 0 "CPVDD?" H 8700 2550 50  0000 L CNN
-F 1 "10 nF" H 8700 2350 50  0000 L CNN
-F 2 "" H 8650 2450 60  0001 C CNN
-F 3 "" H 8650 2450 60  0001 C CNN
-	1    8650 2450
-	1    0    0    -1  
-$EndComp
-$Comp
-L CAPAPOL CPVDD?
-U 1 1 54DEF190
-P 9000 2200
-F 0 "CPVDD?" H 9050 2300 50  0000 L CNN
-F 1 "1000 uF" H 9050 2100 50  0000 L CNN
-F 2 "" H 9000 2200 60  0001 C CNN
-F 3 "" H 9000 2200 60  0001 C CNN
-	1    9000 2200
-	1    0    0    -1  
-$EndComp
-$Comp
-L CAPAPOL CVDD?
-U 1 1 54DEF191
-P 3950 1600
-F 0 "CVDD?" H 4000 1700 50  0000 L CNN
-F 1 "330 uF" H 4000 1500 50  0000 L CNN
-F 2 "" H 3950 1600 60  0001 C CNN
-F 3 "" H 3950 1600 60  0001 C CNN
-	1    3950 1600
-	1    0    0    -1  
-$EndComp
-Text Label 5450 6000 0    60   ~ 0
-DVDD
-Text Label 5450 6400 0    60   ~ 0
-DGND
-$Comp
-L CAPAPOL CVDD?
-U 1 1 54DEF192
-P 4850 6200
-F 0 "CVDD?" H 4900 6300 50  0000 L CNN
-F 1 "47 uF" H 4900 6100 50  0000 L CNN
-F 2 "" H 4850 6200 60  0001 C CNN
-F 3 "" H 4850 6200 60  0001 C CNN
-	1    4850 6200
-	1    0    0    -1  
-$EndComp
-$Comp
-L C CVDD?
-U 1 1 54DEF193
-P 5450 6200
-F 0 "CVDD?" H 5500 6300 50  0000 L CNN
-F 1 "1 uF" H 5500 6100 50  0000 L CNN
-F 2 "" H 5450 6200 60  0001 C CNN
-F 3 "" H 5450 6200 60  0001 C CNN
-	1    5450 6200
-	1    0    0    -1  
-$EndComp
+Text Label 7400 3600 2    60   ~ 0
+OUT_A2
+Text Label 7400 3500 2    60   ~ 0
+OUT_A1
 Text Notes 1700 4500 0    60   ~ 0
 Control singals
 Text Notes 1500 3600 0    60   ~ 0
 Signals to microcontroller
-Text Notes 1750 6450 0    60   ~ 0
-Mode selection pins: \nFull bridge mode
-Text Label 2150 6950 2    60   ~ 0
-AGND
-Text Label 4150 4200 2    60   ~ 0
-AGND
-Text Label 2150 7100 0    60   ~ 0
-M3
-Text Label 2150 6900 0    60   ~ 0
-M2
-Text Label 2150 6700 0    60   ~ 0
-M1
-Text Label 6150 1800 0    60   ~ 0
-DGND
-$Comp
-L C CGVDD_A?
-U 1 1 54DEF194
-P 4500 1600
-F 0 "CGVDD_A?" H 4550 1700 50  0000 L CNN
-F 1 "1 uF" H 4550 1500 50  0000 L CNN
-F 2 "" H 4500 1600 60  0001 C CNN
-F 3 "" H 4500 1600 60  0001 C CNN
-	1    4500 1600
-	1    0    0    -1  
-$EndComp
-$Comp
-L C CGVDD_B?
-U 1 1 54DEF195
-P 5050 1600
-F 0 "CGVDD_B?" H 5100 1700 50  0000 L CNN
-F 1 "1 uF" H 5100 1500 50  0000 L CNN
-F 2 "" H 5050 1600 60  0001 C CNN
-F 3 "" H 5050 1600 60  0001 C CNN
-	1    5050 1600
-	1    0    0    -1  
-$EndComp
 Text HLabel 2100 5550 0    60   Input ~ 0
-~RESET_AB
-Text HLabel 2100 5850 0    60   Input ~ 0
-~RESET_CD
-Text Label 2100 5550 0    60   ~ 0
-~RESET_AB
-Text Label 2100 5850 0    60   ~ 0
-~RESET_CD
-$Comp
-L R R_OC_ADJ?
-U 1 1 54DEF196
-P 4150 3600
-F 0 "R_OC_ADJ?" V 4230 3600 50  0000 C CNN
-F 1 "68 K" V 4150 3600 50  0000 C CNN
-F 2 "" H 4150 3600 60  0001 C CNN
-F 3 "" H 4150 3600 60  0001 C CNN
-	1    4150 3600
-	-1   0    0    1   
-$EndComp
-Text Label 5050 4250 2    60   ~ 0
-M3
-Text Label 5050 4350 2    60   ~ 0
-M2
-Text Label 5050 4450 2    60   ~ 0
-M1
-Text Label 5050 3950 2    60   ~ 0
-DGND
-$Comp
-L C C_VREG?
-U 1 1 54DEF197
-P 4350 4200
-F 0 "C_VREG?" H 4400 4300 50  0000 L CNN
-F 1 "100 nF" H 4400 4100 50  0000 L CNN
-F 2 "" H 4350 4200 60  0001 C CNN
-F 3 "" H 4350 4200 60  0001 C CNN
-	1    4350 4200
-	0    1    1    0   
-$EndComp
-$Comp
-L R R?
-U 1 1 54DEF198
-P 4400 3950
-F 0 "R?" V 4480 3950 50  0000 C CNN
-F 1 "1" V 4400 3950 50  0000 C CNN
-F 2 "" H 4400 3950 60  0001 C CNN
-F 3 "" H 4400 3950 60  0001 C CNN
-	1    4400 3950
-	0    1    1    0   
-$EndComp
-Text Label 5050 4650 2    60   ~ 0
-~RESET_CD
-Text Label 5050 3650 2    60   ~ 0
-~RESET_AB
-Text Label 5050 4750 2    60   ~ 0
-PWM_D
-Text Label 5050 4550 2    60   ~ 0
-PWM_C
-Text Label 5050 3750 2    60   ~ 0
-PWM_B
-Text Label 5050 3550 2    60   ~ 0
-PWM_A
-Text Label 2100 5300 0    60   ~ 0
-PWM_D
-Text Label 2100 5100 0    60   ~ 0
-PWM_C
-Text Label 2100 4900 0    60   ~ 0
-PWM_B
-Text Label 2100 4700 0    60   ~ 0
-PWM_A
+~RESET
+Text Label 2400 5550 2    60   ~ 0
+~RESET
+Text Label 2400 5300 2    60   ~ 0
+IN_B2
+Text Label 2400 5100 2    60   ~ 0
+IN_B1
+Text Label 2400 4900 2    60   ~ 0
+IN_A2
+Text Label 2400 4700 2    60   ~ 0
+IN_A1
 Text HLabel 2100 5300 0    60   Input ~ 0
-PWM_D
+IN_B2
 Text HLabel 2100 5100 0    60   Input ~ 0
-PWM_C
+IN_B1
 Text HLabel 2100 4900 0    60   Input ~ 0
-PWM_B
+IN_A2
 Text HLabel 2100 4700 0    60   Input ~ 0
-PWM_A
-Text Label 5050 3450 2    60   ~ 0
+IN_A1
+Text Label 2400 3850 2    60   ~ 0
 ~FAULT
-Text Label 2150 4150 0    60   ~ 0
-~FAULT
-Text Label 5050 3350 2    60   ~ 0
-~OTW
-Text Label 2150 3800 0    60   ~ 0
-~OTW
-Text Label 2050 2050 0    60   ~ 0
+Text Label 2350 2050 2    60   ~ 0
 DGND
-Text Label 2050 1700 0    60   ~ 0
+Text Label 2350 1850 2    60   ~ 0
 DVDD
-Text Label 2050 1350 0    60   ~ 0
+Text Label 2350 1350 2    60   ~ 0
 PVDD
 Text HLabel 2050 1350 0    60   Input ~ 0
 PVDD
-Text Label 6950 4750 0    60   ~ 0
-PVDD
-Text Label 6950 3950 0    60   ~ 0
-PVDD
-Text Label 6950 4550 0    60   ~ 0
-PGND
-Text Label 6950 3750 0    60   ~ 0
-PGND
-Text Label 6950 3450 0    60   ~ 0
-PVDD
-Text Label 6950 4250 0    60   ~ 0
-PVDD
-Text HLabel 2150 4150 0    60   Output ~ 0
+Text HLabel 2100 3850 0    60   Output ~ 0
 ~FAULT
-Text HLabel 2150 3800 0    60   Output ~ 0
-~OTW
 Text HLabel 2050 2050 0    60   Input ~ 0
 DGND
-Text HLabel 2050 1700 0    60   Input ~ 0
+Text HLabel 2050 1850 0    60   Input ~ 0
 DVDD
 $Comp
-L C CBST_C?
-U 1 1 54DEF199
-P 8100 4350
-F 0 "CBST_C?" H 8150 4450 50  0000 L CNN
-F 1 "100 nF" H 8150 4250 50  0000 L CNN
-F 2 "" H 8100 4350 60  0001 C CNN
-F 3 "" H 8100 4350 60  0001 C CNN
-	1    8100 4350
-	-1   0    0    1   
+L DRV8843 IC2
+U 1 1 551F476F
+P 6300 3750
+F 0 "IC2" H 6300 4700 50  0000 L BNN
+F 1 "DRV8843" H 5950 2550 50  0000 L BNN
+F 2 "Popurri_CDR:HTSSOP28" H 7200 4850 50  0001 C CNN
+F 3 "" H 6300 3750 60  0000 C CNN
+	1    6300 3750
+	1    0    0    -1  
 $EndComp
 $Comp
-L C CBST_D?
-U 1 1 54DEF19A
-P 7650 4850
-F 0 "CBST_D?" H 7700 4950 50  0000 L CNN
-F 1 "100 nF" H 7700 4750 50  0000 L CNN
-F 2 "" H 7650 4850 60  0001 C CNN
-F 3 "" H 7650 4850 60  0001 C CNN
-	1    7650 4850
+L C C19
+U 1 1 551F9CEB
+P 7300 2950
+F 0 "C19" H 7325 3050 50  0000 L CNN
+F 1 "10n" H 7325 2850 50  0000 L CNN
+F 2 "Capacitors_ThroughHole:C_Disc_D3_P2.5" H 7338 2800 30  0001 C CNN
+F 3 "" H 7300 2950 60  0000 C CNN
+	1    7300 2950
+	1    0    0    1   
+$EndComp
+Wire Wire Line
+	6950 3050 7100 3050
+Wire Wire Line
+	7100 3050 7100 2700
+Wire Wire Line
+	7100 2700 7300 2700
+Wire Wire Line
+	7300 2700 7300 2800
+Wire Wire Line
+	7300 3100 7300 3150
+Wire Wire Line
+	7300 3150 6950 3150
+$Comp
+L C C20
+U 1 1 551F9F21
+P 7650 2950
+F 0 "C20" H 7675 3050 50  0000 L CNN
+F 1 "100n" H 7675 2850 50  0000 L CNN
+F 2 "Capacitors_ThroughHole:C_Disc_D3_P2.5" H 7688 2800 30  0001 C CNN
+F 3 "" H 7650 2950 60  0000 C CNN
+	1    7650 2950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6950 3250 8000 3250
+Wire Wire Line
+	7650 3250 7650 3100
+$Comp
+L R R16
+U 1 1 551FA163
+P 8000 2950
+F 0 "R16" V 8080 2950 50  0000 C CNN
+F 1 "1M" V 8000 2950 50  0000 C CNN
+F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM10mm" V 7930 2950 30  0001 C CNN
+F 3 "" H 8000 2950 30  0000 C CNN
+	1    8000 2950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8000 2700 8000 2800
+Wire Wire Line
+	7500 2700 8300 2700
+Wire Wire Line
+	8000 3250 8000 3100
+Connection ~ 7650 3250
+Wire Wire Line
+	7850 2700 7850 2550
+Connection ~ 7850 2700
+Wire Wire Line
+	7650 2700 7650 2800
+Text Label 8050 2550 2    60   ~ 0
+PVDD
+Wire Wire Line
+	7850 2550 8050 2550
+Wire Wire Line
+	6950 3350 7500 3350
+Wire Wire Line
+	7500 2700 7500 4050
+Connection ~ 7650 2700
+Wire Wire Line
+	7500 4050 6950 4050
+Connection ~ 7500 3350
+Wire Wire Line
+	7400 3600 6950 3600
+Wire Wire Line
+	7400 3500 6950 3500
+Text Label 7400 4250 2    60   ~ 0
+OUT_B2
+Text Label 7400 4150 2    60   ~ 0
+OUT_B1
+Wire Wire Line
+	7400 4250 6950 4250
+Wire Wire Line
+	7400 4150 6950 4150
+$Comp
+L R R14
+U 1 1 551FAE19
+P 7200 3750
+F 0 "R14" V 7280 3750 50  0000 C CNN
+F 1 ".47" V 7200 3750 50  0000 C CNN
+F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM15mm" V 7130 3750 30  0001 C CNN
+F 3 "" H 7200 3750 30  0000 C CNN
+	1    7200 3750
 	0    1    1    0   
 $EndComp
+Wire Wire Line
+	6950 3750 7050 3750
+Wire Wire Line
+	7350 3750 8300 3750
+Wire Wire Line
+	7650 3750 7650 5100
 $Comp
-L C CBST_B?
-U 1 1 54DEF19B
-P 8100 3850
-F 0 "CBST_B?" H 8150 3950 50  0000 L CNN
-F 1 "100 nF" H 8150 3750 50  0000 L CNN
-F 2 "" H 8100 3850 60  0001 C CNN
-F 3 "" H 8100 3850 60  0001 C CNN
-	1    8100 3850
-	-1   0    0    1   
-$EndComp
-$Comp
-L C CBST_A?
-U 1 1 54DEF19C
-P 7650 3350
-F 0 "CBST_A?" H 7700 3450 50  0000 L CNN
-F 1 "100 nF" H 7700 3250 50  0000 L CNN
-F 2 "" H 7650 3350 60  0001 C CNN
-F 3 "" H 7650 3350 60  0001 C CNN
-	1    7650 3350
+L R R15
+U 1 1 551FAFC7
+P 7200 4350
+F 0 "R15" V 7280 4350 50  0000 C CNN
+F 1 ".47" V 7200 4350 50  0000 C CNN
+F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM15mm" V 7130 4350 30  0001 C CNN
+F 3 "" H 7200 4350 30  0000 C CNN
+	1    7200 4350
 	0    1    1    0   
 $EndComp
-Text Label 6950 4950 0    60   ~ 0
-DVDD
-Text Label 5050 4950 2    60   ~ 0
-DVDD
-Text Label 5050 4850 2    60   ~ 0
-DVDD
-Text Label 6950 3250 0    60   ~ 0
-DVDD
-Text Label 6150 1400 0    60   ~ 0
-DVDD
-Text Label 5050 3250 2    60   ~ 0
-DVDD
+Wire Wire Line
+	7050 4350 6950 4350
+Wire Wire Line
+	7350 4350 7650 4350
+Connection ~ 7650 4350
+Text Label 2350 2400 2    60   ~ 0
+OUT_A1
+Text Label 2350 2600 2    60   ~ 0
+OUT_A2
+Text Label 2350 2800 2    60   ~ 0
+OUT_B1
+Text Label 2350 3000 2    60   ~ 0
+OUT_B2
+Wire Wire Line
+	5650 3650 5500 3650
+Wire Wire Line
+	5500 3650 5500 3750
+Wire Wire Line
+	5500 3750 5650 3750
+Wire Wire Line
+	5500 3700 5350 3700
+Wire Wire Line
+	5350 3700 5350 4200
+Connection ~ 5500 3700
+Wire Wire Line
+	5650 4050 5500 4050
+Wire Wire Line
+	5500 4050 5500 4150
+Wire Wire Line
+	5500 4150 5650 4150
+Wire Wire Line
+	5350 4100 5500 4100
+Connection ~ 5500 4100
+Connection ~ 5350 4100
+Wire Wire Line
+	5650 3850 5400 3850
+Wire Wire Line
+	5650 3950 5400 3950
+Wire Wire Line
+	5650 3450 5400 3450
+Wire Wire Line
+	5650 3550 5400 3550
+Wire Wire Line
+	2400 4700 2100 4700
+Wire Wire Line
+	2100 4900 2400 4900
+Wire Wire Line
+	2400 5100 2100 5100
+Wire Wire Line
+	2100 5300 2400 5300
+Text Label 5400 3450 0    60   ~ 0
+IN_A1
+Text Label 5400 3550 0    60   ~ 0
+IN_A2
+Text Label 5400 3850 0    60   ~ 0
+IN_B1
+Text Label 5400 3950 0    60   ~ 0
+IN_B2
 $Comp
-L C CGVDD_D?
-U 1 1 54DEF19D
-P 6150 1600
-F 0 "CGVDD_D?" H 6200 1700 50  0000 L CNN
-F 1 "1 uF" H 6200 1500 50  0000 L CNN
-F 2 "" H 6150 1600 60  0001 C CNN
-F 3 "" H 6150 1600 60  0001 C CNN
-	1    6150 1600
+L C C18
+U 1 1 551FD325
+P 4600 3250
+F 0 "C18" H 4625 3350 50  0000 L CNN
+F 1 "100n" H 4625 3150 50  0000 L CNN
+F 2 "Capacitors_ThroughHole:C_Disc_D3_P2.5" H 4638 3100 30  0001 C CNN
+F 3 "" H 4600 3250 60  0000 C CNN
+	1    4600 3250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4600 3100 4600 2950
+Wire Wire Line
+	4600 2950 5650 2950
+Wire Wire Line
+	4600 3400 4600 3750
+$Comp
+L R R12
+U 1 1 551FD567
+P 4950 3150
+F 0 "R12" V 5030 3150 50  0000 C CNN
+F 1 "10k" V 4950 3150 50  0000 C CNN
+F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM10mm" V 4880 3150 30  0001 C CNN
+F 3 "" H 4950 3150 30  0000 C CNN
+	1    4950 3150
 	1    0    0    -1  
 $EndComp
 $Comp
-L C CGVDD_C?
-U 1 1 54DEF19E
-P 5600 1600
-F 0 "CGVDD_C?" H 5650 1700 50  0000 L CNN
-F 1 "1 uF" H 5650 1500 50  0000 L CNN
-F 2 "" H 5600 1600 60  0001 C CNN
-F 3 "" H 5600 1600 60  0001 C CNN
-	1    5600 1600
+L R R13
+U 1 1 551FD6E3
+P 4950 3550
+F 0 "R13" V 5030 3550 50  0000 C CNN
+F 1 "10k" V 4950 3550 50  0000 C CNN
+F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM10mm" V 4880 3550 30  0001 C CNN
+F 3 "" H 4950 3550 30  0000 C CNN
+	1    4950 3550
 	1    0    0    -1  
 $EndComp
+Wire Wire Line
+	4950 3000 4950 2950
+Connection ~ 4950 2950
+Wire Wire Line
+	4950 3400 4950 3300
+Wire Wire Line
+	4950 3350 5200 3350
+Wire Wire Line
+	5200 3350 5200 3200
+Wire Wire Line
+	5200 3200 5550 3200
+Wire Wire Line
+	5550 3150 5550 3250
+Wire Wire Line
+	5550 3150 5650 3150
+Connection ~ 4950 3350
+Wire Wire Line
+	5550 3250 5650 3250
+Connection ~ 5550 3200
+Wire Wire Line
+	4950 3700 4950 3750
+Wire Wire Line
+	4950 3750 4600 3750
+Wire Wire Line
+	2400 5550 2100 5550
+Text Label 5300 4500 0    60   ~ 0
+~RESET
+Wire Wire Line
+	5300 4500 5650 4500
+Text HLabel 2100 5750 0    60   Input ~ 0
+~SLEEP
+Text Label 2400 5750 2    60   ~ 0
+~SLEEP
+Wire Wire Line
+	2400 5750 2100 5750
+Text Label 5300 4600 0    60   ~ 0
+~SLEEP
+Wire Wire Line
+	5300 4600 5650 4600
+Wire Wire Line
+	5650 4700 5300 4700
+Text Label 5300 4700 0    60   ~ 0
+~FAULT
+Wire Wire Line
+	2400 3850 2100 3850
+Wire Wire Line
+	4800 4400 5650 4400
+Wire Wire Line
+	6450 5000 6450 5100
+Wire Wire Line
+	6450 5100 7650 5100
+Wire Wire Line
+	6600 5100 6600 5000
+Connection ~ 6600 5100
+Text Label 7000 5100 0    60   ~ 0
+PGND
 $Comp
-L DRV8432 U?
-U 1 1 54DEF19F
-P 6000 4100
-F 0 "U?" H 6000 4000 50  0000 C CNN
-F 1 "DRV8432" H 6000 4200 50  0000 C CNN
-F 2 "MODULE" H 6000 4100 50  0001 C CNN
-F 3 "DOCUMENTATION" H 6000 4100 50  0001 C CNN
-	1    6000 4100
+L CAPAPOL CVDD1
+U 1 1 551FF258
+P 8300 3000
+F 0 "CVDD1" H 8350 3100 50  0000 L CNN
+F 1 "330 uF" H 8350 2900 50  0000 L CNN
+F 2 "Capacitors_ThroughHole:C_Radial_D5_L6_P2.5" H 8300 3000 60  0001 C CNN
+F 3 "" H 8300 3000 60  0001 C CNN
+	1    8300 3000
 	1    0    0    -1  
 $EndComp
+Wire Wire Line
+	8300 2700 8300 2800
+Connection ~ 8000 2700
+Wire Wire Line
+	8300 3750 8300 3200
+Connection ~ 7650 3750
+Text Label 4650 3750 0    60   ~ 0
+DGND
+Text Label 5050 4200 0    60   ~ 0
+DGND
+Wire Wire Line
+	5350 4200 5050 4200
+$Comp
+L R R11
+U 1 1 551FF94C
+P 4800 4150
+F 0 "R11" V 4880 4150 50  0000 C CNN
+F 1 "10k" V 4800 4150 50  0000 C CNN
+F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM10mm" V 4730 4150 30  0001 C CNN
+F 3 "" H 4800 4150 30  0000 C CNN
+	1    4800 4150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4800 4400 4800 4300
+Wire Wire Line
+	4800 4000 4800 3950
+Wire Wire Line
+	4800 3950 5050 3950
+Text Label 5300 2950 0    60   ~ 0
+INT33
+Text Label 5050 3950 2    60   ~ 0
+DVDD
+Wire Wire Line
+	2350 1350 2050 1350
+Wire Wire Line
+	2350 1850 2050 1850
+Wire Wire Line
+	2350 2050 2050 2050
+Text Label 2350 1550 2    60   ~ 0
+PGND
+Text HLabel 2050 1550 0    60   Input ~ 0
+PGND
+Wire Wire Line
+	2350 1550 2050 1550
 $EndSCHEMATC

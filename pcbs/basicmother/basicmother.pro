@@ -1,4 +1,4 @@
-update=vie 27 feb 2015 21:19:25 ART
+update=vie 03 abr 2015 16:58:49 ART
 version=1
 last_client=kicad
 [cvpcb]
@@ -84,3 +84,6 @@ LibName32=zigbit_dual
 LibName33=ptn04050c
 LibName34=ptn78000w
 LibName35=drv8432
+LibName36=lm4950
+LibName37=drv8843
+LibName38=lmz12002
