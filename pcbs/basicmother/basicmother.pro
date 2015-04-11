@@ -1,4 +1,4 @@
-update=vie 03 abr 2015 16:58:49 ART
+update=vie 10 abr 2015 21:27:58 ART
 version=1
 last_client=kicad
 [cvpcb]
@@ -84,6 +84,6 @@ LibName32=zigbit_dual
 LibName33=ptn04050c
 LibName34=ptn78000w
 LibName35=drv8432
-LibName36=lm4950
-LibName37=drv8843
-LibName38=lmz12002
+LibName36=drv8843
+LibName37=lmz12002
+LibName38=bluetooth-mod

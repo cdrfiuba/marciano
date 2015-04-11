@@ -37,12 +37,13 @@ LIBS:drv8432
 LIBS:lm4950
 LIBS:drv8843
 LIBS:lmz12002
+LIBS:bluetooth-mod
 LIBS:basicmother-cache
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 4 4
+Sheet 4 5
 Title "Dual H-Bridge"
 Date "30 aug 2013"
 Rev "v1.0"
