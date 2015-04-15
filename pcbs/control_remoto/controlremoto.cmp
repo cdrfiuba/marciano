@@ -1,241 +1,395 @@
-Cmp-Mod V01 Created by Cvpcb 0.201503060816+5481~22~ubuntu14.04.1-product   date = vie 13 mar 2015 21:50:10 ART
+Cmp-Mod V01 Created by Cvpcb 0.201504141001+5596~22~ubuntu14.04.1-product   date = mié 15 abr 2015 00:17:54 ART
 
 BeginCmp
-TimeStamp = /4D37591E;
+TimeStamp = /552E70C6;
 Reference = C1;
-ValeurCmp = 100uF;
+ValeurCmp = 100u;
 IdModule  = Capacitors_ThroughHole:C_Radial_D5_L6_P2.5;
 EndCmp
 
 BeginCmp
-TimeStamp = /4D375928;
+TimeStamp = /552E6E5C;
 Reference = C2;
-ValeurCmp = 100uF;
-IdModule  = Discret:C1V5;
+ValeurCmp = 100u;
+IdModule  = Capacitors_ThroughHole:C_Radial_D5_L6_P2.5;
 EndCmp
 
 BeginCmp
 TimeStamp = /5503C36B;
 Reference = C3;
-ValeurCmp = C;
-IdModule  = ;
+ValeurCmp = 10u;
+IdModule  = Capacitors_ThroughHole:C_Radial_D5_L6_P2.5;
 EndCmp
 
 BeginCmp
 TimeStamp = /55040934;
 Reference = C4;
-ValeurCmp = C;
-IdModule  = ;
+ValeurCmp = 100n;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
 EndCmp
 
 BeginCmp
 TimeStamp = /550419B1;
 Reference = C5;
-ValeurCmp = C;
-IdModule  = ;
+ValeurCmp = 100n;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /5528903B/552E6B77;
+Reference = C6;
+ValeurCmp = 10u;
+IdModule  = Capacitors_ThroughHole:C_Radial_D5_L6_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /5528903B/55289583;
+Reference = C7;
+ValeurCmp = 100n;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /5528903B/55289949;
+Reference = C8;
+ValeurCmp = 47n;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /5528903B/55289796;
+Reference = C9;
+ValeurCmp = 250u;
+IdModule  = Capacitors_ThroughHole:C_Radial_D5_L6_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /552889EA;
+Reference = C10;
+ValeurCmp = 1u;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /5528903B/552E0967;
+Reference = C11;
+ValeurCmp = 33n;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /5528903B/552E0E3C;
+Reference = C12;
+ValeurCmp = 33n;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /5528903B/552E04F7;
+Reference = C13;
+ValeurCmp = 1u;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /5528903B/55287ECA;
+Reference = C14;
+ValeurCmp = 1u;
+IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /5528903B/552867E4;
+Reference = J1;
+ValeurCmp = JACK_TRS_6PINS;
+IdModule  = Pin_Headers:Pin_Header_Angled_1x06;
+EndCmp
+
+BeginCmp
+TimeStamp = /55288904;
+Reference = L1;
+ValeurCmp = 1u;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /5528903B/552E04F1;
+Reference = L2;
+ValeurCmp = 1u;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /5528903B/55287E3F;
+Reference = L3;
+ValeurCmp = 1u;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM10mm;
 EndCmp
 
 BeginCmp
 TimeStamp = /55037531;
 Reference = P1;
-ValeurCmp = CONN_01X02;
-IdModule  = molex_2_recto;
-EndCmp
-
-BeginCmp
-TimeStamp = /4D375826;
-Reference = P2;
-ValeurCmp = DIPSWITCH;
-IdModule  = Sockets_DIP:DIP-16__300;
+ValeurCmp = CONN_BATT;
+IdModule  = Popurri_CDR:molex_2_recto;
 EndCmp
 
 BeginCmp
 TimeStamp = /5503811A;
-Reference = P3;
-ValeurCmp = CONN_01X02;
-IdModule  = molex_2_recto;
+Reference = P2;
+ValeurCmp = CONN_BTN00;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
 EndCmp
 
 BeginCmp
 TimeStamp = /55038BDA;
-Reference = P4;
-ValeurCmp = CONN_01X02;
-IdModule  = molex_2_recto;
+Reference = P3;
+ValeurCmp = CONN_BTN05;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
 EndCmp
 
 BeginCmp
 TimeStamp = /55038444;
-Reference = P5;
-ValeurCmp = CONN_01X02;
-IdModule  = ;
+Reference = P4;
+ValeurCmp = CONN_BTN01;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
 EndCmp
 
 BeginCmp
 TimeStamp = /55038BE1;
-Reference = P6;
-ValeurCmp = CONN_01X02;
-IdModule  = ;
+Reference = P5;
+ValeurCmp = CONN_BTN06;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
 EndCmp
 
 BeginCmp
 TimeStamp = /55038A32;
-Reference = P7;
-ValeurCmp = CONN_01X02;
-IdModule  = ;
+Reference = P6;
+ValeurCmp = CONN_BTN02;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
 EndCmp
 
 BeginCmp
 TimeStamp = /55038BF0;
-Reference = P8;
-ValeurCmp = CONN_01X02;
-IdModule  = ;
+Reference = P7;
+ValeurCmp = CONN_BTN07;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
 EndCmp
 
 BeginCmp
 TimeStamp = /55038A39;
-Reference = P9;
-ValeurCmp = CONN_01X02;
-IdModule  = ;
+Reference = P8;
+ValeurCmp = CONN_BTN03;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
 EndCmp
 
 BeginCmp
 TimeStamp = /55038BF7;
-Reference = P10;
-ValeurCmp = CONN_01X02;
-IdModule  = ;
+Reference = P9;
+ValeurCmp = CONN_BTN08;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
 EndCmp
 
 BeginCmp
 TimeStamp = /55038D14;
-Reference = P11;
-ValeurCmp = CONN_01X02;
-IdModule  = ;
+Reference = P10;
+ValeurCmp = CONN_BTN04;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
 EndCmp
 
 BeginCmp
 TimeStamp = /55038D1B;
-Reference = P12;
-ValeurCmp = CONN_01X02;
-IdModule  = ;
+Reference = P11;
+ValeurCmp = CONN_BTN09;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
 EndCmp
 
 BeginCmp
 TimeStamp = /5503BCE2;
-Reference = P13;
-ValeurCmp = CONN_01X02;
-IdModule  = ;
+Reference = P12;
+ValeurCmp = CONN_MIC;
+IdModule  = Connect:PINHEAD1-2;
 EndCmp
 
 BeginCmp
-TimeStamp = /4D375962;
-Reference = R1;
-ValeurCmp = inf;
-IdModule  = Discret:R3;
+TimeStamp = /4D375826;
+Reference = P13;
+ValeurCmp = DIPSWITCH;
+IdModule  = Sockets_DIP:DIP-16__300_ELL;
 EndCmp
 
 BeginCmp
 TimeStamp = /4D376AC1;
-Reference = R2;
+Reference = R1;
 ValeurCmp = 2k2;
-IdModule  = Discret:R3;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /4D375962;
+Reference = R2;
+ValeurCmp = inf;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM10mm;
 EndCmp
 
 BeginCmp
 TimeStamp = /4D376AC7;
 Reference = R3;
 ValeurCmp = 2k2;
-IdModule  = Discret:R3;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM10mm;
 EndCmp
 
 BeginCmp
 TimeStamp = /5503BE55;
 Reference = R4;
-ValeurCmp = R;
-IdModule  = ;
+ValeurCmp = 2.2k;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM10mm;
 EndCmp
 
 BeginCmp
 TimeStamp = /5503C85C;
 Reference = R5;
-ValeurCmp = R;
-IdModule  = ;
+ValeurCmp = 100k;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM10mm;
 EndCmp
 
 BeginCmp
 TimeStamp = /5503E512;
 Reference = R6;
-ValeurCmp = R;
-IdModule  = ;
+ValeurCmp = 1k;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM10mm;
 EndCmp
 
 BeginCmp
-TimeStamp = /5503C92E;
+TimeStamp = /5528903B/5528990D;
 Reference = R7;
-ValeurCmp = R;
-IdModule  = ;
+ValeurCmp = 10;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM10mm;
 EndCmp
 
 BeginCmp
 TimeStamp = /5503F6CC;
 Reference = R8;
-ValeurCmp = R;
-IdModule  = ;
+ValeurCmp = 10k;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM10mm;
 EndCmp
 
 BeginCmp
 TimeStamp = /5504021C;
 Reference = R9;
-ValeurCmp = R;
-IdModule  = ;
+ValeurCmp = 820;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM10mm;
 EndCmp
 
 BeginCmp
 TimeStamp = /550419A9;
 Reference = R10;
-ValeurCmp = R;
-IdModule  = ;
+ValeurCmp = 820;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /5528903B/55286982;
+Reference = R11;
+ValeurCmp = 1k;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /5528903B/55286E6F;
+Reference = R12;
+ValeurCmp = 1k;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /5528903B/552E0876;
+Reference = R13;
+ValeurCmp = 1k;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /5528903B/552E0E36;
+Reference = R14;
+ValeurCmp = 1k;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /552858ED;
+Reference = RV1;
+ValeurCmp = 100K;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
+EndCmp
+
+BeginCmp
+TimeStamp = /5528629C;
+Reference = RV2;
+ValeurCmp = 100k;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
+EndCmp
+
+BeginCmp
+TimeStamp = /5528903B/552892CA;
+Reference = RV3;
+ValeurCmp = 10k;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
 EndCmp
 
 BeginCmp
 TimeStamp = /4D40792D;
 Reference = SW1;
 ValeurCmp = ON/OFF;
-IdModule  = PIN_ARRAY_2X1;
-EndCmp
-
-BeginCmp
-TimeStamp = /4D3756F7;
-Reference = U1;
-ValeurCmp = PTN4050;
-IdModule  = PTN04050CAH;
-EndCmp
-
-BeginCmp
-TimeStamp = /4D3756DA;
-Reference = U2;
-ValeurCmp = MBED;
-IdModule  = MBED-DOBLE;
-EndCmp
-
-BeginCmp
-TimeStamp = /4D3756BD;
-Reference = U3;
-ValeurCmp = ZIGBIT_DUAL_DIP;
-IdModule  = ZIGBIT_DIP_40;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
 EndCmp
 
 BeginCmp
 TimeStamp = /55036E3B;
-Reference = U4;
+Reference = U1;
 ValeurCmp = MMA7455L_DIP8;
-IdModule  = Sockets_DIP:DIP-8__300;
+IdModule  = Sockets_DIP:DIP-8__300_ELL;
+EndCmp
+
+BeginCmp
+TimeStamp = /4D3756F7;
+Reference = U2;
+ValeurCmp = PTN4050;
+IdModule  = Power_CDR:PTN04050C-EUU;
+EndCmp
+
+BeginCmp
+TimeStamp = /4D3756DA;
+Reference = U3;
+ValeurCmp = MBED;
+IdModule  = Popurri_CDR:MBED;
 EndCmp
 
 BeginCmp
 TimeStamp = /5503C54F;
-Reference = U5;
+Reference = U4;
 ValeurCmp = TL082;
-IdModule  = ;
+IdModule  = Sockets_DIP:DIP-8__300_ELL;
+EndCmp
+
+BeginCmp
+TimeStamp = /4D3756BD;
+Reference = U5;
+ValeurCmp = ZIGBIT_DUAL_DIP;
+IdModule  = Popurri_CDR:ZIGBIT_DIP_40;
+EndCmp
+
+BeginCmp
+TimeStamp = /5528903B/552DFF48;
+Reference = U6;
+ValeurCmp = TL082;
+IdModule  = Sockets_DIP:DIP-8__300_ELL;
+EndCmp
+
+BeginCmp
+TimeStamp = /5528903B/55287B8D;
+Reference = U7;
+ValeurCmp = LM386_mod;
+IdModule  = Sockets_DIP:DIP-8__300_ELL;
 EndCmp
 
 EndListe

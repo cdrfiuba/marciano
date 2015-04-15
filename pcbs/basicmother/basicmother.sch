@@ -34,7 +34,6 @@ LIBS:zigbit_dual
 LIBS:ptn04050c
 LIBS:ptn78000w
 LIBS:drv8432
-LIBS:lm4950
 LIBS:drv8843
 LIBS:lmz12002
 LIBS:bluetooth-mod
@@ -1185,4 +1184,14 @@ F 3 "" H 6500 7700 60  0000 C CNN
 	1    6500 7700
 	1    0    0    -1  
 $EndComp
+Text Label 4350 5900 0    60   ~ 0
+TXDBT
+Text Label 4350 6000 0    60   ~ 0
+RXDBT
+Text Label 3750 6700 2    60   ~ 0
+RXDBT
+Text Label 3750 6600 2    60   ~ 0
+TXDBT
+Text Notes 4100 5700 0    60   ~ 0
+verificar conexiones
 $EndSCHEMATC
