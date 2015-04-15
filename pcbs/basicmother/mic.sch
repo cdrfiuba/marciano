@@ -34,7 +34,6 @@ LIBS:zigbit_dual
 LIBS:ptn04050c
 LIBS:ptn78000w
 LIBS:drv8432
-LIBS:lm4950
 LIBS:drv8843
 LIBS:lmz12002
 LIBS:bluetooth-mod
