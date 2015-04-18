@@ -1,0 +1,123 @@
+24-bit RGB Persistence of Vision Toy
+by Matt Pandina
+
+INTRODUCTION
+
+Persistence of vision toys have been done before, but this one will
+allow you to display actual photographs.
+
+I call it 24-bit RGB color, but internally it is actually using 36-bit
+color. Twelve bits are used to represent each red, green, and blue
+color channel, however I limit the colors I display to the ones that
+can be represented in 24-bits. The extra bits are used to obtain extra
+precision when gamma correcting each 8-bit red, green, and blue color
+channel.
+
+The project is split into two parts: software, and firmware.
+
+The software, called png2tlc, runs on Linux and functions to convert a
+standard PNG file into the native format that can be sent directly to
+a TLC5940. When given a PNG file as input, it produces (on stdout) a C
+source code file that, when linked with the rest of the firmware,
+stores the image data from the PNG file into an array in the flash
+memory of an ATmega328P. The Makefile provided with the firmware
+expects this data to be in a file called data.c, so the output of
+png2tlc should be redirected to ../firmware/data.c
+
+
+SOFTWARE BUILD INSTRUCTIONS:
+
+png2tlc depends on libpng, so before building, make sure you have the
+libpng12-dev package installed. To install it on Debian or Ubuntu, use
+the following command:
+
+    sudo apt-get install libpng12-dev
+
+If you are using another variant of Linux, (or Windows, or OS X), you
+will want to have libpng and its development headers on the standard
+include path. You will also want to use the gcc compiler, since the
+code is written using C99 with GNU extensions.
+
+Once libpng12-dev is installed, change to the software directory and
+build png2tlc using the following commands:
+
+    cd software
+    make
+
+This should produce a file called png2tlc. You can run it with the -h
+argument to see all the supported command line arguments.
+
+
+CHANGING THE IMAGE
+
+Using your favorite image editor, create a PNG file (with or without
+an alpha channel) and save it somewhere. For this example, I'm going
+to assume your file is called nyan16.png, and that it has been saved
+to the software/ directory.
+
+Next type:
+
+    ./png2tlc -n 1 nyan16.png > ../firmware/data.c
+
+replacing '-n 1' with the number of TLC5940 chips connected in series,
+to redirect the output to a file called data.c in the firmware
+directory.
+
+Now, the next time you build the firmware, it will include the new image.
+
+
+CONNECTING THE HARDWARE
+
+Depending on how many TLC5940 chips are linked in series, you may have
+to change the TLC5940_N variable in firmware/Makefile.
+
+If TLC5940_USART_MSPIM = 0 in firmware/Makefile, connect the hardware
+according to ../../schematics/multiplexing.sch, or
+../../schematics/multiplexing-multi.sch depending on how many TLC5940
+chips are linked in series.
+
+If TLC5940_USART_MSPIM = 1 in firmware/Makefile, connect the hardware
+according to ../../schematics/usart_mspim-multiplexing.sch, or
+../../schematics/usart_mspim-multiplexing-multi.sch depending on how
+many TLC5940 chips are linked in series.
+
+
+FIRMWARE BUILD INSTRUCTIONS
+
+Once you have png2tlc'd the data from a PNG file into the
+../firmware/data.c file, change to the firmware directory using the
+following command:
+
+    cd ../firmware
+
+Open the Makefile, and verify that DEVICE, CLOCK, PROGRAMMER, and
+FUSES are set correctly in the Makefile based on your hardware
+setup. The provided Makefile is configured for an ATmega328P running
+at 20 MHz, using an AVR ISP mkII programmer, with FUSES set to remove
+the clock divider, to use the external crystal, and to enable clock
+output.
+
+Again, be sure to set TLC5940_N to the number of TLC5940 chips you
+have linked in series.
+
+The COMPILE parameter is set to use the non-standard -mint8 option, so
+beware if you add code incompatible with -mint8, such as some
+functions that are part of avr-libc, and any code that doesn't use the
+types from <stdint.h>. Also, be sure to upcast the first parameter of
+any math operations that might overflow an 8-bit integer.
+
+To build the firmware, type:
+
+    make
+
+With your programmer connected, type:
+
+    make fuse
+
+to program the fuse bits, and type:
+
+    make flash
+
+to load the program onto the AVR.
+
+Sit back and enjoy painting full color images in the air with LEDs!

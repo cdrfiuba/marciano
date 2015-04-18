@@ -1,0 +1,8 @@
+Jan 8, 2012
+
+Updated Makefile, tlc5940.c, tlc5940.h to use the newest multiplexing code,
+which has some major speed improvements. Also data.c, data.h were updated to
+conform to the new way that the grayscale data is arranged in the new library.
+
+Note: Any pre-existing data.c file will need to be regenerated using the
+      new png2tlc code in the software/ directory.
