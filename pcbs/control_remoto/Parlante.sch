@@ -35,6 +35,8 @@ LIBS:ptn04050c
 LIBS:reg104-25
 LIBS:zigbit_dual
 LIBS:lm386_mod
+LIBS:plugs
+LIBS:controlremoto-cache
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
