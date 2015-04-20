@@ -99,7 +99,7 @@ U 1 1 552809F6
 P 3400 1900
 F 0 "C19" H 3450 2000 50  0000 L CNN
 F 1 "10u" H 3450 1800 50  0000 L CNN
-F 2 "Capacitors_ThroughHole:C_Disc_D3_P2.5" H 3500 1750 30  0001 C CNN
+F 2 "Capacitors_ThroughHole:C_Radial_D5_L6_P2.5" H 3500 1750 30  0001 C CNN
 F 3 "" H 3400 1900 300 0000 C CNN
 	1    3400 1900
 	0    -1   -1   0   
