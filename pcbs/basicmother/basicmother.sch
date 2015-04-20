@@ -271,9 +271,9 @@ Wire Wire Line
 	3300 7000 3750 7000
 Wire Wire Line
 	3300 7100 3750 7100
-Text Label 3750 6800 2    60   ~ 0
-PWM_L1
 Text Label 3750 6900 2    60   ~ 0
+PWM_L1
+Text Label 3750 6800 2    60   ~ 0
 PWM_L2
 Text Label 3750 7000 2    60   ~ 0
 PWM_R1
@@ -503,10 +503,8 @@ Wire Wire Line
 	5200 4600 5550 4600
 Text Label 5200 4600 0    60   ~ 0
 ~SHD
-Text Label 950  6400 0    60   ~ 0
+Text Label 3750 6400 2    60   ~ 0
 ~SHD
-Wire Wire Line
-	950  6400 1450 6400
 Wire Wire Line
 	1450 5500 850  5500
 Wire Wire Line
@@ -533,11 +531,11 @@ F 3 "" H 9950 4450 60  0000 C CNN
 	1    9950 4450
 	1    0    0    -1  
 $EndComp
-Text Label 950  7200 0    60   ~ 0
+Text Label 950  7300 0    60   ~ 0
 ~RESET
 Text Label 950  7100 0    60   ~ 0
 ~FAULT
-Text Label 950  7300 0    60   ~ 0
+Text Label 950  7200 0    60   ~ 0
 ~SLEEP
 Wire Wire Line
 	9600 5500 9800 5500
@@ -788,4 +786,6 @@ Wire Wire Line
 	4400 7050 4400 7100
 Wire Wire Line
 	4400 7100 4500 7100
+Wire Wire Line
+	3750 6400 3300 6400
 $EndSCHEMATC
