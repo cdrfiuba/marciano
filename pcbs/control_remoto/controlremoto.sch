@@ -35,6 +35,7 @@ LIBS:ptn04050c
 LIBS:reg104-25
 LIBS:zigbit_dual
 LIBS:lm386_mod
+LIBS:controlremoto-cache
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
@@ -84,8 +85,6 @@ NoConn ~ 7400 1600
 NoConn ~ 7400 1700
 NoConn ~ 7400 1800
 NoConn ~ 7400 1900
-NoConn ~ 7400 2000
-NoConn ~ 7400 2100
 NoConn ~ 5550 2900
 NoConn ~ 5550 1300
 NoConn ~ 5550 1200
@@ -141,9 +140,9 @@ Text Label 750  3800 0    60   ~ 0
 ACEL_INT2
 Text Label 1000 3950 0    60   ~ 0
 GND
-Text Label 5050 1900 0    60   ~ 0
+Text Label 7900 2100 2    60   ~ 0
 ACEL_INT2
-Text Label 5050 1800 0    60   ~ 0
+Text Label 7900 2000 2    60   ~ 0
 ACEL_INT1
 Text Label 5050 2200 0    60   ~ 0
 ZIGBIT_TX
@@ -556,17 +555,17 @@ Text Label 5200 2600 0    60   ~ 0
 BTN_02
 Text Label 5200 2700 0    60   ~ 0
 BTN_03
-Text Label 7900 2400 2    60   ~ 0
-BTN_04
-Text Label 7900 2500 2    60   ~ 0
-BTN_05
-Text Label 7900 2600 2    60   ~ 0
-BTN_06
-Text Label 7900 2700 2    60   ~ 0
-BTN_07
 Text Label 5200 2000 0    60   ~ 0
+BTN_04
+Text Label 7900 2400 2    60   ~ 0
+BTN_05
+Text Label 7900 2500 2    60   ~ 0
+BTN_06
+Text Label 7900 2600 2    60   ~ 0
+BTN_07
+Text Label 7900 2700 2    60   ~ 0
 BTN_08
-Text Label 5200 2100 0    60   ~ 0
+Text Label 7900 2800 2    60   ~ 0
 BTN_09
 Text Notes 2100 800  0    60   ~ 0
 ALIMENTACION
@@ -806,8 +805,6 @@ Wire Wire Line
 Wire Wire Line
 	1000 3950 1250 3950
 Wire Wire Line
-	5050 1800 5550 1800
-Wire Wire Line
 	2450 3950 3350 3950
 Wire Wire Line
 	2450 3500 2600 3500
@@ -910,8 +907,6 @@ Wire Wire Line
 	5550 2300 5050 2300
 Wire Wire Line
 	2450 3800 3350 3800
-Wire Wire Line
-	5050 1900 5550 1900
 Wire Wire Line
 	10550 1750 10750 1750
 Wire Wire Line
@@ -1357,4 +1352,10 @@ F 3 "" H 5300 4800 60  0000 C CNN
 	1    5300 4800
 	0    -1   -1   0   
 $EndComp
+Wire Wire Line
+	7900 2800 7400 2800
+Wire Wire Line
+	7900 2100 7400 2100
+Wire Wire Line
+	7900 2000 7400 2000
 $EndSCHEMATC
