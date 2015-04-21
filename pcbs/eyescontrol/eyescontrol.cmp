@@ -1,0 +1,94 @@
+Cmp-Mod V01 Created by Cvpcb 0.201504141001+5596~22~ubuntu14.04.1-product   date = lun 20 abr 2015 23:20:48 ART
+
+BeginCmp
+TimeStamp = /5532F5CE;
+Reference = C1;
+ValeurCmp = 100n;
+IdModule  = Capacitors_ThroughHole:C_Rect_L4_W2.5_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /5532EF87;
+Reference = C2;
+ValeurCmp = 100n;
+IdModule  = Capacitors_ThroughHole:C_Rect_L4_W2.5_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /5532FD09;
+Reference = C3;
+ValeurCmp = 15p;
+IdModule  = Capacitors_ThroughHole:C_Rect_L4_W2.5_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /553303B1;
+Reference = C4;
+ValeurCmp = 100n;
+IdModule  = Capacitors_ThroughHole:C_Rect_L4_W2.5_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /5532FAAE;
+Reference = C5;
+ValeurCmp = 15p;
+IdModule  = Capacitors_ThroughHole:C_Rect_L4_W2.5_P2.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /55331438;
+Reference = C6;
+ValeurCmp = 330u;
+IdModule  = Capacitors_ThroughHole:C_Radial_D8_L11.5_P3.5;
+EndCmp
+
+BeginCmp
+TimeStamp = /52D08BC6;
+Reference = IC1;
+ValeurCmp = ATMEGA88-P;
+IdModule  = Sockets_DIP:DIP-28__300;
+EndCmp
+
+BeginCmp
+TimeStamp = /54D55E7F;
+Reference = P1;
+ValeurCmp = EYES;
+IdModule  = Pin_Headers:Pin_Header_Straight_2x05;
+EndCmp
+
+BeginCmp
+TimeStamp = /54D55BCC;
+Reference = P2;
+ValeurCmp = PROG_MICRO;
+IdModule  = Pin_Headers:Pin_Header_Straight_2x03;
+EndCmp
+
+BeginCmp
+TimeStamp = /553310D8;
+Reference = P3;
+ValeurCmp = CONN_01X04;
+IdModule  = Socket_Strips:Socket_Strip_Straight_1x04;
+EndCmp
+
+BeginCmp
+TimeStamp = /5520E784;
+Reference = R1;
+ValeurCmp = 10k;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM10mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /5532F7BF;
+Reference = SW1;
+ValeurCmp = SW_PUSH;
+IdModule  = Popurri_CDR:SW_PUSH_SMALL_m;
+EndCmp
+
+BeginCmp
+TimeStamp = /5532FF18;
+Reference = Y1;
+ValeurCmp = 18.432 MHz;
+IdModule  = Crystals:Crystal_HC49-U_Vertical;
+EndCmp
+
+EndListe
