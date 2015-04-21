@@ -1,4 +1,4 @@
-update=vie 10 abr 2015 21:04:52 ART
+update=lun 20 abr 2015 23:46:09 ART
 last_client=kicad
 [cvpcb]
 version=1
@@ -81,3 +81,4 @@ LibName33=ptn04050c
 LibName34=reg104-25
 LibName35=zigbit_dual
 LibName36=lm386_mod
+LibName37=audio-jack-stereo

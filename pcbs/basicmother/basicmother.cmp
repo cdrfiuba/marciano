@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb 0.201504141001+5596~22~ubuntu14.04.1-product   date = lun 20 abr 2015 00:21:17 ART
+Cmp-Mod V01 Created by Cvpcb 0.201504141001+5596~22~ubuntu14.04.1-product   date = mar 21 abr 2015 01:31:54 ART
 
 BeginCmp
 TimeStamp = /54D57D39/54D591C0;
@@ -25,14 +25,14 @@ BeginCmp
 TimeStamp = /54D57D39/54D5AE89;
 Reference = C4;
 ValeurCmp = 22n;
-IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+IdModule  = Capacitors_ThroughHole:C_Rect_L7_W2_P5;
 EndCmp
 
 BeginCmp
 TimeStamp = /54D57D39/551F7BE7;
 Reference = C5;
 ValeurCmp = 22n;
-IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+IdModule  = Capacitors_ThroughHole:C_Rect_L7_W2_P5;
 EndCmp
 
 BeginCmp
@@ -81,14 +81,14 @@ BeginCmp
 TimeStamp = /54DEA09E/5503AE04;
 Reference = C12;
 ValeurCmp = 1u;
-IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+IdModule  = Capacitors_ThroughHole:C_Rect_L18_W5_P15;
 EndCmp
 
 BeginCmp
 TimeStamp = /54DEA09E/5503D082;
 Reference = C13;
 ValeurCmp = 1u;
-IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+IdModule  = Capacitors_ThroughHole:C_Rect_L18_W5_P15;
 EndCmp
 
 BeginCmp
@@ -123,7 +123,7 @@ BeginCmp
 TimeStamp = /5528069C/55288DAC;
 Reference = C18;
 ValeurCmp = 1u;
-IdModule  = Capacitors_ThroughHole:C_Disc_D3_P2.5;
+IdModule  = Capacitors_ThroughHole:C_Rect_L18_W5_P15;
 EndCmp
 
 BeginCmp
@@ -264,6 +264,13 @@ TimeStamp = /5528069C/5531C027;
 Reference = P10;
 ValeurCmp = mic_conn;
 IdModule  = Socket_Strips:Socket_Strip_Straight_1x02;
+EndCmp
+
+BeginCmp
+TimeStamp = /54D57D39/55360EE8;
+Reference = P11;
+ValeurCmp = BATT;
+IdModule  = Popurri_CDR:molex_2_recto;
 EndCmp
 
 BeginCmp
