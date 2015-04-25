@@ -1,5 +1,5 @@
 joystick_ext_rad = 25;
-joystick_int_rad = 22;
+joystick_int_rad = 20.5;
 joystick_depth = 90.5;
 
 joystick_ext_rect_height = 40; // dimension in y
