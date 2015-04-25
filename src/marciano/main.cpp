@@ -15,7 +15,7 @@
 #define DIR_FORWARD    1
 #define DIR_BACKWARD   2
 
-#define MAX_ACCEL    0.1
+#define MAX_ACCEL    1.0
 
 PwmOut MotorL_In1(p26);
 PwmOut MotorL_In2(p25);
