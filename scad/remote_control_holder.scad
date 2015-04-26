@@ -1,3 +1,6 @@
+use <Write.scad>
+
+
 joystick_ext_rad = 20.5;
 joystick_int_rad = 17;
 joystick_depth = 84.5;
@@ -88,16 +91,21 @@ module keyboard(){
 
 module joystick(){
 
-	difference() {
-  		cylinder(r=joystick_ext_rad, h=joystick_depth, $fn = 60, center=true);
-  		cylinder(r=joystick_int_rad, h=joystick_depth, $fn = 60, center=true);
-		translate([-keyboard_int_rect_width/2, 0, -keyboard_int_rect_depth/2]) {	
-			cube([keyboard_int_rect_width, keyboard_int_rect_height, keyboard_int_rect_depth]);
+	union(){
+		difference() {
+  			cylinder(r=joystick_ext_rad, h=joystick_depth, $fn = 80, center=true);
+  			cylinder(r=joystick_int_rad, h=joystick_depth, $fn = 80, center=true);
+			translate([-keyboard_int_rect_width/2, 0, -keyboard_int_rect_depth/2]) {	
+				cube([keyboard_int_rect_width, keyboard_int_rect_height, keyboard_int_rect_depth]);
+			}
 		}
-	}
 
-	translate([0, -5, 0]){	
-		keyboard();
+		//writecylinder("Marciano",[0,0,0], 6, joystick_ext_rad, rotate=180,center=true); 
+		writecylinder("MARCIANO",[0,-.4,0], 20.5,h = 6,rotate=180,center=true, font = "orbitron.dxf"); 
+
+		translate([0, -5, 0]){	
+			keyboard();
+		}
 	}
 }
 
@@ -106,5 +114,11 @@ module joystick(){
 
 
 joystick();
+
+// write on a cylinder translate([0,0,0]) cylinder(r=20,h=40,center=true); 
+//writecylinder("Marciano",[0,0,0],30,40,rotate=90,center=true); 
+
+
+
 
 
