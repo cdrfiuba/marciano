@@ -23,7 +23,7 @@ support_hole_rad = 1.75;
 support_hole_height = 15; 
 support_holes_spacing = 65;
 
-buttons_hole_size = 13;
+buttons_hole_size = 12.5;
 buttons_holes_spacing = 16.5;
 
 
@@ -100,8 +100,17 @@ module joystick(){
 			}
 		}
 
-		//writecylinder("Marciano",[0,0,0], 6, joystick_ext_rad, rotate=180,center=true); 
-		writecylinder("MARCIANO",[0,-.4,0], 20.5,h = 6,rotate=180,center=true, font = "orbitron.dxf"); 
+		translate([0, 0, 41.5]){ 
+			difference(){
+				rotate_extrude(convexity = 10)
+				translate([18.7, 0, 0])
+				circle(r = 2, $fn = 60);
+
+				translate([-20, 4, -3]){
+					cube([40, 40, 6]);	
+				}	
+			}
+		}
 
 		translate([0, -5, 0]){	
 			keyboard();
@@ -112,13 +121,21 @@ module joystick(){
 
 // -------- Instance --------- //
 
+// joystick left hand
 
 joystick();
-
-// write on a cylinder translate([0,0,0]) cylinder(r=20,h=40,center=true); 
-//writecylinder("Marciano",[0,0,0],30,40,rotate=90,center=true); 
+writecylinder("MARCIANO",[0,-.4,0], 20.5,h = 6,rotate=180,center=true, font = "orbitron.dxf"); 
 
 
+// joystick right hand
 
-
-
+rotate([180, 0, 0]){
+	translate([0, -120, 0]){
+		mirror([0,0,1]){
+			joystick();
+		}
+		rotate([180, 0, 180]){
+			writecylinder("MARCIANO",[0,-.4,0], 20.5,h = 6,rotate=-180,center=true, font = "orbitron.dxf"); 
+		}
+	}
+}
