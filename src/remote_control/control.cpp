@@ -2,7 +2,8 @@
 #include "mma7455l.h"
 #include "car_commands.h"
 #include <stdio.h>
-
+#include <stdlib.h>
+//#include "audio.h"
 
 bool moving;
 
@@ -73,6 +74,34 @@ void send_data_pc(Serial pc, float *vect) {
             (int) (vect[0] * 10), (int) (vect[1] * 10), (int) (vect[2]* 10));
 }
 
+uint8_t getButtons() {
+    uint8_t r = 0;
+    // Buttons are inverse enabled
+    if (b9 == 0) 
+      r = STOP;
+    else if (b8 == 0)
+      r = START;
+    else if (b7 == 0)
+      r = EYES_ON;
+    else if (b6 == 0)
+      r = EYES_OFF;
+    else if (b5 == 0)
+      r = AUDIO;
+    else if (b4 == 0)
+      r = EYES_UPDW;
+    else if (b3 == 0)
+      r = EYES_CIRCLE;
+    else if (b2 == 0)
+      r = EYES_BLINK;
+    else if (b1 == 0)
+      r = EYES_WINKY;
+    else if (b0 == 0)
+      r = EYES_ANGRY;
+    return r;
+}
+
+
+
 int main() {
 
     // Serial port through USB
@@ -80,14 +109,25 @@ int main() {
     moving = false;
     // Zigbit connection
     Serial cmdLink(1, 38400);
+    Pin rstLink(P18, 1, Output);
+    rstLink = 1;
 
+    //audio_init();
     // Leds on the board
     Bus leds(4, LED1, LED2, LED3, LED4);
     leds.mode(Output);
 
     // Buttons on the board
-    Pin left(P19, 2, Input, PullUp);
-    Pin right(P20, 2, Input, PullUp);
+    Pin b0(P18, 2, Input, PullUp);
+    Pin b1(P17, 2, Input, PullUp);
+    Pin b2(P16, 2, Input, PullUp);
+    Pin b3(P15, 2, Input, PullUp);
+    Pin b4(P11, 2, Input, PullUp);
+    Pin b5(P22, 2, Input, PullUp);
+    Pin b6(P23, 2, Input, PullUp);
+    Pin b7(P24, 2, Input, PullUp);
+    Pin b8(P25, 2, Input, PullUp);
+    Pin b9(P26, 2, Input, PullUp);
 
     // Small pause before callibration
 	  Delay(1);
@@ -95,14 +135,42 @@ int main() {
     Accelerometer acer(2);
     
     float vect[3];
+    uint8_t btn = 0, cmd = 0;
+    int vel =0;
     
     while(1)
     {
+        btn = getButtons();        
+        //uint8_t s1 = get_audio();
+        //if (s1 == 1) leds = 1;
+        //else leds = 0;
         acer.get10BitVector(vect);
-        show_angle(leds, vect[1]);
+        //show_angle(leds, vect[1]);
         //send_data_pc(pc, vect);
-        send_car_command(cmdLink, vect, left, right);
+        //send_car_command(cmdLink, vect, b0, b1);
 
+/*        leds = 0;
+        if (b0 == 0) 
+          leds = 1;
+        else if (b1 == 0)
+          leds = 2;
+        else if (b2 == 0)
+          leds = 3;
+        else if (b3 == 0)
+          leds = 4;
+        else if (b4 == 0)
+          leds = 5;
+        else if (b5 == 0)
+          leds = 6;
+        else if (b6 == 0)
+          leds = 7;
+        else if (b7 == 0)
+          leds = 8;
+        else if (b8 == 0)
+          leds = 9;
+        else if (b9 == 0)
+          leds = 10;
+          */
         // Small pause between measurements
         Delay(0.1); 
     }
