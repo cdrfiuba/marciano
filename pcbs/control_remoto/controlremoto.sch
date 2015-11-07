@@ -548,25 +548,25 @@ F 3 "" H 3350 5600 60  0000 C CNN
 $EndComp
 Text Notes 1950 4300 0    60   ~ 0
 BOTONES
-Text Label 5200 2400 0    60   ~ 0
-BTN_00
-Text Label 5200 2500 0    60   ~ 0
-BTN_01
-Text Label 5200 2600 0    60   ~ 0
-BTN_02
 Text Label 5200 2700 0    60   ~ 0
+BTN_00
+Text Label 5200 2600 0    60   ~ 0
+BTN_01
+Text Label 5200 2500 0    60   ~ 0
+BTN_02
+Text Label 5200 2400 0    60   ~ 0
 BTN_03
 Text Label 5200 2000 0    60   ~ 0
 BTN_04
-Text Label 7900 2400 2    60   ~ 0
+Text Label 7900 2800 2    60   ~ 0
 BTN_05
-Text Label 7900 2500 2    60   ~ 0
+Text Label 7900 2700 2    60   ~ 0
 BTN_06
 Text Label 7900 2600 2    60   ~ 0
 BTN_07
-Text Label 7900 2700 2    60   ~ 0
+Text Label 7900 2500 2    60   ~ 0
 BTN_08
-Text Label 7900 2800 2    60   ~ 0
+Text Label 7900 2400 2    60   ~ 0
 BTN_09
 Text Notes 2100 800  0    60   ~ 0
 ALIMENTACION

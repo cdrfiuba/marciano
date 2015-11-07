@@ -148,8 +148,6 @@ DIPSW_7
 Text Label 1200 1950 0    60   ~ 0
 DIPSW_8
 Wire Wire Line
-	2450 1950 2450 1250
-Wire Wire Line
 	2450 1250 2700 1250
 $Comp
 L GND #PWR01
@@ -788,4 +786,27 @@ Wire Wire Line
 	4400 7100 4500 7100
 Wire Wire Line
 	3750 6400 3300 6400
+Wire Wire Line
+	2550 1250 2550 1950
+Wire Wire Line
+	2550 1950 2450 1950
+Connection ~ 2550 1250
+Wire Wire Line
+	2450 1850 2550 1850
+Connection ~ 2550 1850
+Wire Wire Line
+	2450 1750 2550 1750
+Connection ~ 2550 1750
+Wire Wire Line
+	2450 1650 2550 1650
+Connection ~ 2550 1650
+Wire Wire Line
+	2450 1550 2550 1550
+Connection ~ 2550 1550
+Wire Wire Line
+	2450 1450 2550 1450
+Connection ~ 2550 1450
+Wire Wire Line
+	2450 1350 2550 1350
+Connection ~ 2550 1350
 $EndSCHEMATC
