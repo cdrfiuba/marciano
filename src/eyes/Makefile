@@ -15,7 +15,7 @@
 # FUSES ........ Parameters for avrdude to flash the fuses appropriately.
 
 DEVICE     = atmega88
-CLOCK      = 18432000
+CLOCK      = 16000000
 PROGRAMMER = -c usbtiny -p m88
 OBJECTS    = main.o usart.o tlc5940.o eyes.o
 

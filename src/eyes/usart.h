@@ -28,6 +28,7 @@
 
 
 #define USART_BAUDRATE_115200   BAUD_PRESCALER(115200)
+#define USART_BAUDRATE_9600     BAUD_PRESCALER(9600)
 
 //#define USART0_INTERRUPT  // Comentar para deshabilitar USART por interrupcion
 
